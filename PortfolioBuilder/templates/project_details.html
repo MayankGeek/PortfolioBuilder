@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{%load static%}
+
+{% block content %}
+
+<link rel="stylesheet"href="{% static 'home.css' %}"></link>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <h2>Project Details</h2>
+            <p>Please review the details below:</p>
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <th>First Name:</th>
+                        <td>John</td>
+                    </tr>
+                    <tr>
+                        <th>Last Name:</th>
+                        <td>Doe</td>
+                    </tr>
+                    <tr>
+                        <th>Email:</th>
+                        <td>john.doe@example.com</td>
+                    </tr>
+                    <tr>
+                        <th>Mobile No:</th>
+                        <td>1234567890</td>
+                    </tr>
+                    <tr>
+                        <th>Place:</th>
+                        <td>New York</td>
+                    </tr>
+                    
+                </tbody>
+            </table>
+            <a href="{%url 'Home:add_project_form'%}"><button type="button" class="btn btn-primary mx-2">Update</button></a>
+            <a href="{%url 'Home:add_skills_form'%}"><button type="button" class="btn btn-primary">Save and create portfolio</button></a>
+          
+        </div>
+    </div>
+</div>
+  
+
+
+
+{% endblock %}
