@@ -1,5 +1,7 @@
 /* Ensure images don't overflow their parent container */
-
+body {
+  zoom: 97%;
+}
 
 img {
     max-width: 100%;
@@ -63,6 +65,7 @@ img {
       transform: translateX(-300%);
     }
   }
-  
-     
-  
+.form {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+}
