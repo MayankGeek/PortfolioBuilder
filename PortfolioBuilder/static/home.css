@@ -1,6 +1,7 @@
 /* Ensure images don't overflow their parent container */
 body {
-  zoom: 97%;
+  zoom: 87%;
+  padding-right: 2rem;
 }
 
 img {
