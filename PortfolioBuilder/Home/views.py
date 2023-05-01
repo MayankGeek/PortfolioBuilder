@@ -1,14 +1,46 @@
-from django.shortcuts import render
-
+from django.shortcuts import render,HttpResponse,redirect
+from .forms import UserInfoForm
+from django.contrib.auth.decorators import login_required
+from Home.models import UserInfo
+from django.contrib import messages
 
 # Create your views here.
 def home(request):
     return render(request,'home.html')
-
+    
+@login_required
 def get_details_form(request):
-    return render(request,'get_details_form.html')
+    try:
+        if request.method=="POST":
+            form=UserInfoForm(request.POST,request.FILES)
+            if form.is_valid():
+                name=form.cleaned_data.get('name')
+                email=form.cleaned_data.get('email')
+                mobile_no=form.cleaned_data.get('mobile_no')
+                place=form.cleaned_data.get('place')
+                profession=form.cleaned_data.get('profession')
+                about=form.cleaned_data.get('about')
+                profile_picture=form.cleaned_data.get('profile_picture')
+                user=UserInfo.objects.create(user=request.user,
+                name=name,
+                email=email,
+                mobile_no=mobile_no,
+                place=place,
+                profession=profession,
+                about=about,
+                profile_picture=profile_picture,
+                )
+                user.slug_save()
+                messages.success(request,"Please check your details you have provided press update to update if you entered anything wrong")
+                return redirect('Home:details_page', slug=user.get_slug())
+        else:
+            form=UserInfoForm()
+        return render(request,'get_details_form.html',{form:form})
+    except:
+        return HttpResponse("something went wrong")
 
-def details_page(request):
+
+def details_page(request,slug):
     return render(request,'details_page.html')
 
 def add_skills_form(request):

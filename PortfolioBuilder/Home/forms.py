@@ -1,0 +1,8 @@
+from django import forms
+from .models import UserInfo
+
+class UserInfoForm(forms.ModelForm):
+    class Meta:
+        model=UserInfo
+        fields=['name','mobile_no','email','about','profession','place','profile_picture']
+

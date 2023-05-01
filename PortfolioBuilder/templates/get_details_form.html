@@ -5,48 +5,43 @@ Provide your details
 {%endblock title%}
 {%block content%}
 <link rel="stylesheet"href="{% static 'home.css' %}"></link>
-
   <div class="container">
     <div class="row">
         <div class="col-md-6">
             <h2 class="mb-4">Provide your details</h2>
-            <form>
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
                 <div class="row mb-3">
-                    <div class="col">
-                        <input type="text" class="form-control" placeholder="First name">
+                    <div class="mb-3">
+                        <input type="text" class="form-control" name="name" maxlength="50" required id="id_name" placeholder="Name">
                     </div>
                     <div class="col">
-                        <input type="text" class="form-control" placeholder="Last name">
+                        <input type="email" name="email" maxlength="254" class="form-control" required id="id_email" placeholder="Email">
                     </div>
                 </div>
                 <div class="mb-3">
-                    <input type="email" class="form-control" placeholder="Email">
+                    <input type="tel" class="form-control" placeholder="Your mobile no."name="mobile_no">
                 </div>
                 <div class="mb-3">
-                    <input type="email" class="form-control" placeholder="Email">
+                    <input type="text" class="form-control" placeholder="Your profession"name="profession">
                 </div>
                 <div class="mb-3">
-                    <input type="tel" class="form-control" placeholder="Mobile">
+                    <input type="text" name="place" class="form-control" placeholder="Your current City" maxlength="50" required id="id_place">
                 </div>
                 <div class="mb-3">
-                    <textarea class="form-control" placeholder="About"></textarea>
+                    <textarea name="about" id="id_about"class="form-control" placeholder="Write about yourself"></textarea>
                 </div>
                 <div class="mb-3">
-                    <input type="file" class="form-control" id="fileInput">
-                </div>
-                <a href="{%url 'Home:details_page' %}"><button type="button" class="btn btn-primary btn-lg">Save and continue</button></a>
-               
+                    <label for="fileInput" class="form-label">Choose a profile picture</label>
+                    <input type="file" name="profile_picture" accept="image/*" required id="id_profile_picture" class="form-control">
+                  </div><br>       
+               <button type="submit" value="save"class="btn btn-primary btn-lg my-1 mx-1">Save and continue</button>
+               <button type="submit" value="save"class="btn btn-primary btn-lg">Already a user</button>
             </form>
         </div>
         <div class="col-md-6">
             <img src="{%static 'img2.png' %}" alt="Image" class="img-fluid">
         </div>
-        
     </div>
 </div>
-
-  
-  
-  
-      
 {%endblock content%}
