@@ -7,7 +7,7 @@ from django.contrib import messages
 # Create your views here.
 def home(request):
     return render(request,'home.html')
-    
+
 @login_required
 def get_details_form(request):
     try:
@@ -39,9 +39,11 @@ def get_details_form(request):
     except:
         return HttpResponse("something went wrong")
 
-
+@login_required
 def details_page(request,slug):
-    return render(request,'details_page.html')
+    context={}
+    context['details_page']=UserInfo.objects.get(slug=slug)
+    return render(request,'details_page.html',context)
 
 def add_skills_form(request):
     return render(request,'add_skills_form.html')

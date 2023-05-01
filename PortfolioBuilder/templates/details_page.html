@@ -1,51 +1,58 @@
 {% extends 'base.html' %}
-{%load static%}
+{% load static %}
+{% load thumbnail %}
 
 {% block content %}
+<link rel="stylesheet" href="{% static 'home.css' %}">
 
-<link rel="stylesheet"href="{% static 'home.css' %}"></link>
-
-<div class="container">
-    <div class="row">
-        <div class="col-md-6">
-            <h2>User Details</h2>
-            <p>Please review the details below:</p>
-            <table class="table">
-                <tbody>
-                    <tr>
-                        <th>First Name:</th>
-                        <td>John</td>
-                    </tr>
-                    <tr>
-                        <th>Last Name:</th>
-                        <td>Doe</td>
-                    </tr>
-                    <tr>
-                        <th>Email:</th>
-                        <td>john.doe@example.com</td>
-                    </tr>
-                    <tr>
-                        <th>Mobile No:</th>
-                        <td>1234567890</td>
-                    </tr>
-                    <tr>
-                        <th>Place:</th>
-                        <td>New York</td>
-                    </tr>
-                    <tr>
-                        <th>Picture:</th>
-                        <td><img src="https://via.placeholder.com/150" class="img-fluid"></td>
-                    </tr>
-                </tbody>
-            </table>
-            <a href="{%url 'Home:get_details_form'%}"><button type="button" class="btn btn-primary mx-2">Update</button></a>
-            <a href="{%url 'Home:add_skills_form'%}"><button type="button" class="btn btn-primary">Save and continue</button></a>
-          
-        </div>
+<div class="container"style="padding-bottom:5rem; margin-top: -45px;">
+  <div class="row">
+    <div class="col-md-6 mx-auto">
+      
+      <div class="user-details-form">
+       
+        <!-- <h2>Your details</h2> -->
+        <!-- <p>Please review the details below:</p> -->
+        <div class="profile-pic-container">
+            <img src="{{ details_page.profile_picture.url }}" alt="Profile Picture">
+          </div>
+        <form class="user-form">
+          <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" class="form-control" id="name" value="{{ details_page.name }}" readonly>
+          </div>
+          <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" class="form-control" id="email" value="{{ details_page.email }}" readonly>
+          </div>
+          <div class="form-group">
+            <label for="mobile_no">Mobile No:</label>
+            <input type="tel" class="form-control" id="mobile_no" value="{{ details_page.mobile_no }}" readonly>
+          </div>
+          <div class="form-group">
+            <label for="place">Place:</label>
+            <input type="text" class="form-control" id="place" value="{{ details_page.place }}" readonly>
+          </div>
+          <div class="form-group">
+            <label for="place">Profession:</label>
+            <input type="text" class="form-control" id="place" value="{{ details_page.profession }}" readonly>
+          </div>
+          <div class="form-group">
+            <label for="about">About:</label>
+            <textarea class="form-control" id="about" rows="5" readonly>{{ details_page.about }}</textarea>
+          </div>          
+          <div class="form-group d-flex justify-content-center my-2"style="margin-top: 20px;margin-bottom:20px;">
+            <a href="{% url 'Home:get_details_form' %}">
+              <button type="button" class="btn btn-primary mx-2 my-1">Change details</button>
+            </a>
+            <a href="{% url 'Home:add_skills_form' %}">
+              <button type="button" class="btn btn-primary mx-2 my-1">Save and Continue</button>
+            </a>
+          </div>
+        </form>
+      </div>
     </div>
+  </div>
 </div>
-  
-
-
 
 {% endblock %}
