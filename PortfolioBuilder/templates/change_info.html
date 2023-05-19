@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'home.css' %}">
+<div class="container"style="padding-bottom:5rem; margin-top: -60px;">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+        <p class="h3 text-center" style="padding-top:10px;">Change your details</p>
+
+
+      <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label for="id_name">Name:</label>
+        <div class="form-group">
+          <input type="text" class="form-control" name="name" maxlength="50" required id="id_name" value="{{form.name.value}}" placeholder="Name">
+        </div>
+        <label for="id_mobile_no">Mobile no:</label>
+        <div class="form-group">
+          <input type="number" name="mobile_no" step="1" required id="id_mobile_no" value="{{form.mobile_no.value}}" class="form-control" placeholder="Mobile No">
+        </div>
+        <label for="id_email">Email:</label>
+        <div class="form-group">
+          <input type="email" name="email" maxlength="254" class="form-control" value="{{form.email.value}}" required id="id_email" placeholder="Email">
+        </div>
+        <label for="id_about">About:</label>
+        <div class="form-group">
+          <textarea name="about" cols="40" rows="10" id="id_about" class="form-control" placeholder="About You">{{ form.about.value}}</textarea>
+        </div>
+        <label for="id_profession">Profession:</label>
+        <div class="form-group">
+          <input type="text" name="profession" maxlength="50" value="{{form.profession.value}}" required id="id_profession" class="form-control" placeholder="Email">
+        </div>
+        <label for="id_place">Place:</label>
+        <div class="form-group">
+          <input type="text" name="place" class="form-control" value="{{form.place.value}}" placeholder="Your current City" maxlength="50" required id="id_place">
+        </div>
+        <label for="id_profile_picture">Current profile picture:</label>
+         <a href="{% get_media_prefix %}{{ form.profile_picture.value }}" style="color:dodgerblue;">{{ form.profile_picture.value }}</a>
+        <input type="file" name="profile_picture" accept="image/*" id="id_profile_picture">
+        <div class="text-center mt-4 d-grid gap-2 col-3 mx-auto"> <!-- Added mt-4 class for top margin -->
+          <button class="btn btn-primary lg" type="submit">Update</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

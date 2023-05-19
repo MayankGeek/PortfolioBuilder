@@ -1,4 +1,4 @@
-from django.shortcuts import render,HttpResponse,redirect
+from django.shortcuts import render,HttpResponse,redirect,get_object_or_404
 from .forms import UserInfoForm
 from django.contrib.auth.decorators import login_required
 from Home.models import UserInfo
@@ -44,6 +44,17 @@ def details_page(request,slug):
     context={}
     context['details_page']=UserInfo.objects.get(slug=slug)
     return render(request,'details_page.html',context)
+
+@login_required
+def change_info(request, slug):
+    obj=get_object_or_404(UserInfo,slug=slug)
+    form=UserInfoForm(request.POST or None,request.FILES,instance=obj)
+    if form.is_valid():
+        form.save()
+        messages.success(request,"your information has been updated")
+        return redirect("Home:details_page",slug=slug)
+    form=UserInfoForm(request.POST and request.FILES or None,instance=obj)
+    return render(request,"change_info.html",{"form":form})
 
 def add_skills_form(request):
     return render(request,'add_skills_form.html')

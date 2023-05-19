@@ -1,12 +1,15 @@
 from django.contrib import admin
 from django.urls import path
 from .import views
+
+
 app_name="Home"
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.home,name='home'),
     path('get_details_form/',views.get_details_form,name='get_details_form'),
     path('details_page/<slug>/',views.details_page,name='details_page'),
+    path('change_info/<slug>/',views.change_info,name='change_info'),
     path('add_skills_form/',views.add_skills_form,name='add_skills_form'),
     path('skill_details_page/',views.skill_details_page,name='skill_details_page'),
     path('add_education_form/',views.add_education_form,name='add_education_form'),

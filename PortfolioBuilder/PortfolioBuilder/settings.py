@@ -77,9 +77,6 @@ TEMPLATES = [
 ]
 
 
-
-
-
 WSGI_APPLICATION = 'PortfolioBuilder.wsgi.application'
 
 
@@ -159,5 +156,9 @@ ACCOUNT_EMAIL_VERIFICATION="none"
 
 LOGIN_REDIRECT_URL='Home:home'
 
+
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 MEDIA_URL = '/media/'
+
+
+
