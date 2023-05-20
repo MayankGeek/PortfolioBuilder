@@ -20,4 +20,5 @@ urlpatterns = [
     path('experience_details_page/',views.experience_details_page,name='experience_details_page'),
     path('add_project_form/',views.add_project_form,name='add_project_form'),
     path('project_details_page/',views.project_details_page,name='project_details_page'),
+    path('user_portfolios/',views.user_portfolios,name='user_portfolios'),
 ]

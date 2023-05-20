@@ -86,3 +86,21 @@ def add_project_form(request):
 def project_details_page(request):
     return render(request,'project_details.html')
 
+# @login_required
+# def user_portfolios(request):
+#     context={}
+#     context['user_portfolios']=UserInfo.objects.filter(user=request.user).all()
+#     return render(request,'user_portfolios.html',context)
+
+@login_required
+def user_portfolios(request):
+    context = {}
+    portfolios = UserInfo.objects.filter(user=request.user).all()
+    
+    if not portfolios:
+        # context['message'] = "No portfolios created."
+        messages.success(request,"You don't any portfolios created please create one now !")
+    
+    context['user_portfolios'] = portfolios
+    return render(request, 'user_portfolios.html', context)
+

@@ -154,11 +154,12 @@ CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 ACCOUNT_EMAIL_VERIFICATION="none"
 
-LOGIN_REDIRECT_URL='Home:home'
+# ACCOUNT_SIGNUP_REDIRECT_URL = '/accounts/login/'
+
+LOGIN_REDIRECT_URL='Home:get_details_form'
 
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 MEDIA_URL = '/media/'
-
 
 
