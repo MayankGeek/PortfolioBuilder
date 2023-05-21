@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load static %}
+
+{% block head_title %}{% trans "Sign In" %}{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'home.css' %}">
+<style>
+  /* Custom styles */
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 6vh;
+  }
+
+  .card {
+    max-width: 600px;
+    padding: 20px;
+    border: 1px solid #dee2e6;
+    border-radius: 5px;
+    background-color: #f8f9fa;
+    margin-top:300px;
+  }
+
+  h1 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  p {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  form {
+    text-align: center;
+  }
+
+  button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  button:hover {
+    background-color: #0056b3;
+  }
+</style>
+
+<div class="container">
+  <div class="card">
+    {% if process == "connect" %}
+    <h1>{% blocktrans with provider.name as provider %}Connect {{ provider }}{% endblocktrans %}</h1>
+
+    <p>{% blocktrans with provider.name as provider %}You are about to connect a new third-party account from {{ provider }}.{% endblocktrans %}</p>
+    {% else %}
+    <h1>{% blocktrans with provider.name as provider %}Continue Via {{ provider }}{% endblocktrans %}</h1>
+
+    <p>{% blocktrans with provider.name as provider %}You are about to sign in using a third-party account from {{ provider }}.{% endblocktrans %}</p>
+    {% endif %}
+
+    <form method="post">
+      {% csrf_token %}
+      <button type="submit"class="btn btn-primary">{% trans "Continue" %}</button>
+    </form>
+  </div>
+</div>
+{% endblock %}
