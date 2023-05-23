@@ -139,7 +139,7 @@ img {
 }
 
 
-.btn-sign {
+.btn-signup {
   background: linear-gradient(to right, #f76a8c, #ff5757);
   color: white;
   border: none;
@@ -148,9 +148,24 @@ img {
   transition: all 0.3s ease;
 }
 
-.btn-sign:hover {
+.btn-signup:hover {
   background: linear-gradient(to right, #f76a8c, #ff5757);
   transform: scale(1.1);
   color: white;
   text-decoration: none;
+}
+
+
+
+
+
+
+.btn-others {
+  background: linear-gradient(to right, #f76a8c, #ff5757);
+  color: white;
+
+}
+
+.btn-others:hover {
+  color: white;
 }

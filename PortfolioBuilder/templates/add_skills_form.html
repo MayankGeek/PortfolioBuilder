@@ -1,62 +1,60 @@
-{%extends 'base.html' %}
-{%load static %}
-{%block title%}
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
 Provide your details
-{%endblock title%}
-{%block content%}
-<link rel="stylesheet"href="{% static 'home.css' %}"></link>
+{% endblock title %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'home.css' %}"></link>
 
-  <div class="container">
-    <div class="row">
-        <div class="col-md-6">
-            <h2 class="mb-4">Add your skills</h2>
-            <form>
-                <div class="row mb-3">
-                    <div class="col">
-                        <input type="text" class="form-control" placeholder="First name">
-                    </div>
-                    <div class="col">
-                        <input type="text" class="form-control" placeholder="Last name">
-                    </div>
-                </div>
-                <div class="row mb-3">
-                    <div class="col">
-                        <input type="text" class="form-control" placeholder="First name">
-                    </div>
-                    <div class="col">
-                        <input type="text" class="form-control" placeholder="Last name">
-                    </div>
-                </div>
-                <div class="row mb-3">
-                    <div class="col">
-                        <input type="text" class="form-control" placeholder="First name">
-                    </div>
-                    <div class="col">
-                        <input type="text" class="form-control" placeholder="Last name">
-                    </div>
-                </div>
-                <div class="row mb-3">
-                    <div class="col">
-                        <input type="text" class="form-control" placeholder="First name">
-                    </div>
-                    <div class="col">
-                        <input type="text" class="form-control" placeholder="Last name">
-                    </div>
-                </div>
-                
-                <a href="{%url 'Home:skill_details_page' %}"><button type="button" class="btn btn-primary btn-lg">Save and continue</button></a>
-               
-            </form>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card shadow text-center">
+        <div class="card-body">
+          <h2 class="mb-4">Add your skills</h2>
+          <form>
+            <div class="row mb-3">
+              <div class="col">
+                <input type="text" class="form-control" placeholder="Skill1 eg: Programming">
+              </div>
+              <div class="col">
+                <input type="text" class="form-control" placeholder="Efficiency eg: 80%">
+              </div>
+            </div>
+            <div class="row mb-3">
+              <div class="col">
+                <input type="text" class="form-control" placeholder="Skill2">
+              </div>
+              <div class="col">
+                <input type="text" class="form-control" placeholder="Efficiency">
+              </div>
+            </div>
+            <div class="row mb-3">
+              <div class="col">
+                <input type="text" class="form-control" placeholder="Skill3">
+              </div>
+              <div class="col">
+                <input type="text" class="form-control" placeholder="Efficiency">
+              </div>
+            </div>
+            <div class="row mb-3">
+              <div class="col">
+                <input type="text" class="form-control" placeholder="Skill4">
+              </div>
+              <div class="col">
+                <input type="text" class="form-control" placeholder="Efficiency">
+              </div>
+            </div>
+
+            <div class="d-grid gap-4 col-6 mx-auto">
+                <a href="{% url 'Home:skill_details_page' %}" class="btn btn-others">Save and continue</a>
+                <a href="{% url 'Home:skill_details_page' %}" class="btn btn-others">Skip</a>
+              </div>
+          </form>
         </div>
-        <div class="col-md-6">
-            <img src="{%static 'img3.png' %}" alt="Image" class="img-fluid">
-        </div>
-        
+      </div>
     </div>
+  </div>
 </div>
 
-  
-  
-  
-      
-{%endblock content%}
+{% endblock content %}
