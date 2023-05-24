@@ -1,60 +1,105 @@
 {% extends 'base.html' %}
-{% load static %}
+{%load static%}
 {% block title %}
-Provide your details
-{% endblock title %}
+    skill form
+{% endblock %}
+
 {% block content %}
-<link rel="stylesheet" href="{% static 'home.css' %}"></link>
+<link rel="stylesheet" href="{% static 'home.css' %}">
 
-<div class="container">
-  <div class="row justify-content-center">
-    <div class="col-md-6">
-      <div class="card shadow text-center">
-        <div class="card-body">
-          <h2 class="mb-4">Add your skills</h2>
-          <form>
-            <div class="row mb-3">
-              <div class="col">
-                <input type="text" class="form-control" placeholder="Skill1 eg: Programming">
-              </div>
-              <div class="col">
-                <input type="text" class="form-control" placeholder="Efficiency eg: 80%">
-              </div>
-            </div>
-            <div class="row mb-3">
-              <div class="col">
-                <input type="text" class="form-control" placeholder="Skill2">
-              </div>
-              <div class="col">
-                <input type="text" class="form-control" placeholder="Efficiency">
-              </div>
-            </div>
-            <div class="row mb-3">
-              <div class="col">
-                <input type="text" class="form-control" placeholder="Skill3">
-              </div>
-              <div class="col">
-                <input type="text" class="form-control" placeholder="Efficiency">
-              </div>
-            </div>
-            <div class="row mb-3">
-              <div class="col">
-                <input type="text" class="form-control" placeholder="Skill4">
-              </div>
-              <div class="col">
-                <input type="text" class="form-control" placeholder="Efficiency">
-              </div>
-            </div>
-
-            <div class="d-grid gap-4 col-6 mx-auto">
-                <a href="{% url 'Home:skill_details_page' %}" class="btn btn-others">Save and continue</a>
-                <a href="{% url 'Home:skill_details_page' %}" class="btn btn-others">Skip</a>
-              </div>
-          </form>
+<div class="container mb-3" style="margin-top: 50px;">
+    <div class="row justify-content-center">
+        <div class="col-md-5 text-center">
+            <!-- Removed the panel and its contents -->
         </div>
-      </div>
     </div>
-  </div>
+    <div class="row justify-content-center mt-3">
+        <div class="col-md-6">
+            <div class="card shadow">
+                <h2 class="mb-4 text-center">Add your skills</h2>
+                <div class="card-body">
+                    <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="row justify-content-center">
+                            <div class="col-md-5">
+                                <label for="id_skill1">Skill:</label>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Skill Name" required name="skill1" maxlength="50" id="id_skill1">
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <label for="id_percent1">Percentage:</label>
+                                <div class="form-group">
+                                    <input type="number" class="form-control" placeholder="80" step="0.01" name="percent1" required id="id_percent1">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row justify-content-center">
+                            <div class="col-md-5">
+                                <label for="id_skill1">Skill:</label>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Skill Name"  name="skill2" maxlength="50" id="id_skill1">
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <label for="id_percent1">Percentage:</label>
+                                <div class="form-group">
+                                    <input type="number" class="form-control" placeholder="80" step="0.01" name="percent2"  id="id_percent1">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row justify-content-center">
+                            <div class="col-md-5">
+                                <label for="id_skill1">Skill:</label>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Skill Name"  name="skill3" maxlength="50" id="id_skill1">
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <label for="id_percent1">Percentage:</label>
+                                <div class="form-group">
+                                    <input type="number" class="form-control" placeholder="80" step="0.01" name="percent3"  id="id_percent1">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row justify-content-center">
+                            <div class="col-md-5">
+                                <label for="id_skill1">Skill:</label>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Skill Name"  name="skill4" maxlength="50" id="id_skill1">
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <label for="id_percent1">Percentage:</label>
+                                <div class="form-group">
+                                    <input type="number" class="form-control" placeholder="80" step="0.01" name="percent4"  id="id_percent1">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row justify-content-center">
+                            <div class="col-md-5">
+                                <label for="id_skill1">Skill:</label>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Skill Name"  name="skill5" maxlength="50" id="id_skill1">
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <label for="id_percent1">Percentage:</label>
+                                <div class="form-group">
+                                    <input type="number" class="form-control" placeholder="80" step="0.01" name="percent5"  id="id_percent1">
+                                </div>
+                            </div>
+                        </div><br>
+                       
+                        <div class="row justify-content-center">
+                            <div class="col-md-12 text-center">
+                                <input class="button btn-primary" type="submit" value="Save and continue">
+                            </div>
+                        </div> 
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-
-{% endblock content %}
+{% endblock %}

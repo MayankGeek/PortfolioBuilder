@@ -155,11 +155,6 @@ img {
   text-decoration: none;
 }
 
-
-
-
-
-
 .btn-others {
   background: linear-gradient(to right, #f76a8c, #ff5757);
   color: white;
@@ -169,3 +164,8 @@ img {
 .btn-others:hover {
   color: white;
 }
+
+ .col-md-6:first-child {
+    margin-top: 30px;
+  }
+  

@@ -41,3 +41,19 @@ class UserInfo(models.Model):
 
     def get_img_url(self, slug):
         return reverse('home:media', kwargs={'slug':slug})
+
+class Skill(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, blank=True, null=True)
+    slug = models.ForeignKey(UserInfo, on_delete=models.SET_NULL, blank=True, null=True)
+    skill1 = models.CharField(max_length=50, null=True, blank=True)
+    percent1 = models.DecimalField(max_digits=4, decimal_places=2,default=0.0)
+    skill2 = models.CharField(max_length=50, null=True, blank=True)
+    percent2 = models.DecimalField(max_digits=4, decimal_places=2,default=0.0)
+    skill3 = models.CharField(max_length=50, null=True, blank=True)
+    percent3 = models.DecimalField(max_digits=4, decimal_places=2,default=0.0)
+    skill4 = models.CharField(max_length=50, null=True, blank=True)
+    percent4 = models.DecimalField(max_digits=4, decimal_places=2,default=0.0)
+    skill5 = models.CharField(max_length=50, null=True, blank=True)
+    percent5 = models.DecimalField(max_digits=4, decimal_places=2,default=0.0)
+    def __str__(self):
+        return self.slug.name
