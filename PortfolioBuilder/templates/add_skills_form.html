@@ -24,17 +24,17 @@
                             <div class="col-md-5">
                                 <label for="id_skill1">Skill:</label>
                                 <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Skill Name" required name="skill1" maxlength="50" id="id_skill1">
+                                    <input type="text" class="form-control" placeholder="Skill Name" required name="skill" maxlength="50" id="id_skill1">
                                 </div>
                             </div>
                             <div class="col-md-5">
                                 <label for="id_percent1">Percentage:</label>
                                 <div class="form-group">
-                                    <input type="number" class="form-control" placeholder="80" step="0.01" name="percent1" required id="id_percent1">
+                                    <input type="number" class="form-control" placeholder="80" step="0.01" name="percent" required id="id_percent1">
                                 </div>
                             </div>
                         </div>
-                        <div class="row justify-content-center">
+                        {% comment %} <div class="row justify-content-center">
                             <div class="col-md-5">
                                 <label for="id_skill1">Skill:</label>
                                 <div class="form-group">
@@ -89,11 +89,67 @@
                                     <input type="number" class="form-control" placeholder="80" step="0.01" name="percent5"  id="id_percent1">
                                 </div>
                             </div>
-                        </div><br>
+                        </div><br> {% endcomment %}
+                        <table class="table table-bordered table-hover custom-table">
+                            <tr>
+                                <th>Skill Name</th>
+                                <th>Level Percentage</th>
+                            </tr>
+                         
+                            {% for detail in details %}
+                            <tr>
+                                <td>{{ detail.skill }}</td>
+                                <td>
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar" style="width: {{ detail.percent }}%;" aria-valuenow="{{ detail.percent }}" aria-valuemin="0" aria-valuemax="100">{{ detail.percent1 }}%</div>
+                                    </div>
+                                </td>
+                            </tr>
+                            
+                            {% comment %} <tr>
+                                <td>{{ detail.skill2 }}</td>
+                                <td>
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar" style="width: {{ detail.percent2 }}%;" aria-valuenow="{{ detail.percent2 }}" aria-valuemin="0" aria-valuemax="100">{{ detail.percent2 }}%</div>
+                                    </div>
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>{{ detail.skill3 }}</td>
+                                <td>
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar" style="width: {{ detail.percent3 }}%;" aria-valuenow="{{ detail.percent3 }}" aria-valuemin="0" aria-valuemax="100">{{ detail.percent3 }}%</div>
+                                    </div>
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>{{ detail.skill4 }}</td>
+                                <td>
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar" style="width: {{ detail.percent4 }}%;" aria-valuenow="{{ detail.percent4 }}" aria-valuemin="0" aria-valuemax="100">{{ detail.percent4 }}%</div>
+                                    </div>
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>{{ detail.skill5 }}</td>
+                                <td>
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar" style="width: {{ detail.percent5 }}%;" aria-valuenow="{{ detail.percent5 }}" aria-valuemin="0" aria-valuemax="100">{{ detail.percent5 }}%</div>
+                                    </div>
+                                </td>
+                            </tr>  {% endcomment %}
+                            {% endfor %}
+                        </table>
                        
                         <div class="row justify-content-center">
                             <div class="col-md-12 text-center">
                                 <input class="button btn-primary" type="submit" value="Save and continue">
+                                {% comment %} <input class="button btn-primary" type="submit" value="Save and continue"> {% endcomment %}
+                                <a href="{% url 'Home:skill_details_page' slug %}" class="button btn-primary">Check skills you have added</a>
+
                             </div>
                         </div> 
                     </form>

@@ -107,27 +107,29 @@ def add_skills_form(request, slug):
         form = AddSkillForm(request.POST)
         slug = UserInfo.objects.get(user=request.user, slug=slug)
         if form.is_valid():
-            skill1 = form.cleaned_data.get('skill1')
+            skill = form.cleaned_data.get('skill')
             # skill1 = skill.capitalize()
-            percent1 = form.cleaned_data.get('percent1')
-            skill2 = form.cleaned_data.get('skill2')
-            # skill1 = skill.capitalize()
-            percent2 = form.cleaned_data.get('percent2')
-            skill3 = form.cleaned_data.get('skill3')
-            # skill1 = skill.capitalize()
-            percent3 = form.cleaned_data.get('percent3')
-            skill4 = form.cleaned_data.get('skill4')
-            # skill1 = skill.capitalize()
-            percent4 = form.cleaned_data.get('percent4')
-            skill5 = form.cleaned_data.get('skill5')
-            # skill1 = skill.capitalize()
-            percent5 = form.cleaned_data.get('percent5')
-            if not Skill.objects.filter(user=request.user, slug__slug=slug,skill1=skill1,skill2=skill2,skill3=skill3,skill4=skill4,skill5=skill5):
-                skills = Skill(user=request.user, slug=slug, skill1=skill1, percent1=percent1,skill2=skill2,percent2=percent2,skill3=skill3,
-                percent3=percent3,skill4=skill4,percent4=percent4,skill5=skill5,percent5=percent5)
+            percent = form.cleaned_data.get('percent')
+            # skill = form.cleaned_data.get('skill2')
+            # # skill1 = skill.capitalize()
+            # percent = form.cleaned_data.get('percent2')
+            # skill = form.cleaned_data.get('skill3')
+            # # skill1 = skill.capitalize()
+            # percent = form.cleaned_data.get('percent3')
+            # skill = form.cleaned_data.get('skill4')
+            # # skill1 = skill.capitalize()
+            # percent = form.cleaned_data.get('percent4')
+            # skill = form.cleaned_data.get('skill5')
+            # # skill1 = skill.capitalize()
+            # percent = form.cleaned_data.get('percent5')
+            if not Skill.objects.filter(user=request.user, slug__slug=slug,skill=skill):
+                skills = Skill(user=request.user, slug=slug, skill=skill, percent=percent)
                 skills.save()
                 messages.success(request, "Your skill is registered")
-                return redirect('Home:skill_details_page', slug=slug)
+                details = Skill.objects.filter(slug__slug=slug).all()
+    # print(details)
+                return render(request, 'add_skills_form.html', {'details': details, 'slug': slug})
+                # return redirect('Home:skill_details_page', slug=slug)
             else:
                 return HttpResponse("<h3>You already have registered this skill"
                                         " go and edit if you want......go back</h3>")
@@ -137,6 +139,7 @@ def add_skills_form(request, slug):
 @login_required
 def skill_details_page(request,slug):
     details = Skill.objects.filter(slug__slug=slug).all()
+    # print(details)
     return render(request, 'skill_details.html', {'details': details, 'slug': slug})
 
   

@@ -9,7 +9,8 @@ class UserInfoForm(forms.ModelForm):
 class AddSkillForm(forms.ModelForm):
     class Meta:
         model=Skill
-        fields=['skill1','percent1','skill2','percent2','skill3','percent3','skill4','percent4','skill5','percent5',]
+        # fields=['skill1','percent1','skill2','percent2','skill3','percent3','skill4','percent4','skill5','percent5',]
+        fields=['skill','percent']
 
 
 

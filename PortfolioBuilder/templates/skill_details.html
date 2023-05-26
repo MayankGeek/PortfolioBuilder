@@ -18,15 +18,15 @@ Skills Details
         
         {% for detail in details %}
         <tr>
-            <td>{{ detail.skill1 }}</td>
+            <td>{{ detail.skill }}</td>
             <td>
                 <div class="progress">
-                    <div class="progress-bar" role="progressbar" style="width: {{ detail.percent1 }}%;" aria-valuenow="{{ detail.percent1 }}" aria-valuemin="0" aria-valuemax="100">{{ detail.percent1 }}%</div>
+                    <div class="progress-bar" role="progressbar" style="width: {{ detail.percent }}%;" aria-valuenow="{{ detail.percent }}" aria-valuemin="0" aria-valuemax="100">{{ detail.percent1 }}%</div>
                 </div>
             </td>
         </tr>
         
-        <tr>
+        {% comment %} <tr>
             <td>{{ detail.skill2 }}</td>
             <td>
                 <div class="progress">
@@ -60,7 +60,7 @@ Skills Details
                     <div class="progress-bar" role="progressbar" style="width: {{ detail.percent5 }}%;" aria-valuenow="{{ detail.percent5 }}" aria-valuemin="0" aria-valuemax="100">{{ detail.percent5 }}%</div>
                 </div>
             </td>
-        </tr>
+        </tr>  {% endcomment %}
         {% endfor %}
     </table>
 
