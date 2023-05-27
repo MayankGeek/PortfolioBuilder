@@ -56,49 +56,6 @@ def change_info(request, slug):
     form=UserInfoForm(request.POST and request.FILES or None,instance=obj)
     return render(request,"change_info.html",{"form":form})
 
-# def add_skills_form(request,slug):
-
-#     if request.method=="POST":
-#         form=AddSkillForm(request.POST)
-#         slug=UserInfo.objects.get(user=request.user,slug=slug)
-#         if form.is_valid():
-#             skill=form.cleaned_data.get('skill')
-#             percent=form.cleaned_data.get('percent')
-#             skill2=form.cleaned_data.get('skill2')
-#             percent2=form.cleaned_data.get('percent2')
-#             if not Skill.objects.filter(user=request.user,slug__slug=slug,skill=skill,percent=percent,skill2=skill2,percent2=percent2):
-#                 skills=Skill(user=request.user,slug=slug,skill=skill,percent=percent,skill2=skill2,percent2=percent2)
-#                 skills.save()
-#                 messages.success(request, "your skilles has been saved")
-#                 return redirect("Home:skill_details_page",slug=slug)
-#             else:
-#                 messages.error(request, "You filled wrong information")
-#     form = AddSkillForm()
-#     return render(request, "add_skills_form.html", {'form': form, 'slug': slug})
-    # return render(request,'add_skills_form.html')
-# def add_skills_form(request, slug):
-#     slug_obj = UserInfo.objects.get(user=request.user, slug=slug)
-#     if request.method == "POST":
-#         form = AddSkillForm(request.POST)
-#         if form.is_valid():
-#             skill1 = form.cleaned_data.get('skill1')
-#             percent1 = form.cleaned_data.get('percent1')
-#             # skill2 = form.cleaned_data.get('skill2')
-#             # percent2 = form.cleaned_data.get('percent2')
-
-#             # Check if the skill combination already exists for the user and slug
-#             if not Skill.objects.filter(user=request.user, slug__slug=slug, skill1=skill1, percent1=percent1):
-#                 skills = Skill(user=request.user, slug=slug_obj, skill1=skill1, percent1=percent1)
-#                 skills.save()
-#                 messages.success(request, "Your skills have been saved.")
-#                 return redirect("Home:skill_details_page", slug=slug)
-#             else:
-#                 messages.error(request, "You entered wrong information.")
-#     else:
-#         form = AddSkillForm()
-    
-#     return render(request, "add_skills_form.html", {'form': form, 'slug': slug})
-
 #testing code for add_skills_form
 @login_required
 def add_skills_form(request, slug):
@@ -108,31 +65,15 @@ def add_skills_form(request, slug):
         slug = UserInfo.objects.get(user=request.user, slug=slug)
         if form.is_valid():
             skill = form.cleaned_data.get('skill')
-            # skill1 = skill.capitalize()
             percent = form.cleaned_data.get('percent')
-            # skill = form.cleaned_data.get('skill2')
-            # # skill1 = skill.capitalize()
-            # percent = form.cleaned_data.get('percent2')
-            # skill = form.cleaned_data.get('skill3')
-            # # skill1 = skill.capitalize()
-            # percent = form.cleaned_data.get('percent3')
-            # skill = form.cleaned_data.get('skill4')
-            # # skill1 = skill.capitalize()
-            # percent = form.cleaned_data.get('percent4')
-            # skill = form.cleaned_data.get('skill5')
-            # # skill1 = skill.capitalize()
-            # percent = form.cleaned_data.get('percent5')
             if not Skill.objects.filter(user=request.user, slug__slug=slug,skill=skill):
                 skills = Skill(user=request.user, slug=slug, skill=skill, percent=percent)
                 skills.save()
                 messages.success(request, "Your skill is registered")
                 details = Skill.objects.filter(slug__slug=slug).all()
-    # print(details)
                 return render(request, 'add_skills_form.html', {'details': details, 'slug': slug})
-                # return redirect('Home:skill_details_page', slug=slug)
             else:
-                return HttpResponse("<h3>You already have registered this skill"
-                                        " go and edit if you want......go back</h3>")
+                messages.success(request,"You already have that skill added")
     form = AddSkillForm()
     return render(request, "add_skills_form.html", {'form': form, 'slug': slug})
 
