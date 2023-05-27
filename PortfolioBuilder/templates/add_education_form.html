@@ -1,52 +1,48 @@
-{%extends 'base.html' %}
-{%load static %}
-{%block title%}
-Provide your details
-{%endblock title%}
-{%block content%}
+{% extends 'base.html' %}
+{% block title %}
+{%load static%}
+Education form
+{% endblock %}
+
+{% block content %}
 <link rel="stylesheet"href="{% static 'home.css' %}"></link>
 
-  <div class="container">
-    <div class="row">
-        <div class="col-md-6">
-            <h2 class="mb-4">Add education details</h2>
-            <form>
-                <div class="row mb-3">
-                    <div class="col">
-                        <input type="text" class="form-control" placeholder="First name">
-                    </div>
-                    <div class="col">
-                        <input type="text" class="form-control" placeholder="Last name">
-                    </div>
+<div class="container mb-3" style="margin-top: 50px;">
+    <div class="row justify-content-center"> <!-- Added justify-content-center class to center the content -->
+        <div class="col-md-5">
+            <div class="container text-center"><strong>Tell us about your education</strong></div><br>
+
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <label for="id_board_or_univ">Board or univ:</label>
+                <div class="form-group">
+                    <input type="text" name="board_or_univ" class="form-control" placeholder="Board Name or University Name" maxlength="200" required id="id_board_or_univ">
                 </div>
-                <div class="mb-3">
-                    <input type="email" class="form-control" placeholder="Email">
+                <label for="id_course">Course:</label>
+                <div class="form-group">
+                    <input type="text" name="course" class="form-control" maxlength="200" placeholder="Course" required id="id_course">
                 </div>
-                <div class="mb-3">
-                    <input type="email" class="form-control" placeholder="Email">
+                <label for="id_school_or_college">School or college:</label>
+                <div class="form-group">
+                    <input type="text" name="school_or_college" class="form-control" placeholder="School Name / College Name" maxlength="300" required id="id_school_or_college">
                 </div>
-                <div class="mb-3">
-                    <input type="tel" class="form-control" placeholder="Mobile">
+                <label for="id_cgpa_or_percent">Cgpa or percent:</label>
+                <div class="form-group">
+                    <input type="number" name="cgpa_or_percent" class="form-control" placeholder="CGPA / percentage" step="0.01" required id="id_cgpa_or_percent">
                 </div>
-                <div class="mb-3">
-                    <textarea class="form-control" placeholder="About"></textarea>
+                <label for="id_cgpa">Cgpa:</label>
+                <div class="form-group">
+                    <input type="checkbox" name="cgpa" id="id_cgpa">
                 </div>
-              
-                <a href="{%url 'Home:education_details_page' %}"><button type="button" class="btn btn-primary btn-lg">Skip</button></a>
-                <a href="{%url 'Home:education_details_page' %}"><button type="button" class="btn btn-primary btn-lg mx-2">Save and continue</button></a>
-                
-               
+                {% for education in education_details %}
+                <p>{{education.board_or_univ}}</p>
+                <p>{{education.course}}</p>
+                <p>{{education.cgpa_or_percent}}</p>
+                {% endfor %}
+                <input class="button btn-primary" type="submit" value="Save">
             </form>
+            <a href="{% url 'Home:education_details_page' slug %}" class="button btn-primary">view education details</a>
         </div>
-        <div class="col-md-6">
-            <img src="{%static 'img2.png' %}" alt="Image" class="img-fluid">
-        </div>
-        
     </div>
 </div>
-
-  
-  
-  
-      
-{%endblock content%}
+{% endblock %}

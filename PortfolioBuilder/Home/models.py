@@ -57,3 +57,26 @@ class Skill(models.Model):
     # percent5 = models.DecimalField(max_digits=4, decimal_places=2,default=0.0)
     def __str__(self):
         return self.slug.name
+
+class Education(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, blank=True, null=True)
+    slug = models.ForeignKey(UserInfo, on_delete=models.SET_NULL, blank=True, null=True)
+    board_or_univ = models.CharField(max_length=200)
+    course = models.CharField(max_length=200)
+    cgpa_or_percent = models.DecimalField(max_digits=4, decimal_places=2)
+    cgpa = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.slug.name
+
+class Experience(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, blank=True, null=True)
+    slug = models.ForeignKey(UserInfo, on_delete=models.SET_NULL, blank=True, null=True)
+    organisation_name = models.CharField(max_length=50, null=True, blank=True)
+    role = models.CharField(max_length=50, null=True, blank=True)
+    joining_date = models.DateField()
+    ending_date = models.DateField( blank=True, null=True)
+    work_experience = models.TextField()
+
+    def __str__(self):
+        return self.slug.name

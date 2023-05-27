@@ -1,7 +1,7 @@
 from django.shortcuts import render,HttpResponse,redirect,get_object_or_404
-from .forms import UserInfoForm,AddSkillForm
+from .forms import UserInfoForm,AddSkillForm,EducationForm
 from django.contrib.auth.decorators import login_required
-from Home.models import UserInfo,Skill
+from Home.models import UserInfo,Skill,Education
 from django.contrib import messages
 
 # Create your views here.
@@ -84,12 +84,46 @@ def skill_details_page(request,slug):
     return render(request, 'skill_details.html', {'details': details, 'slug': slug})
 
   
+# @login_required
+# def add_education_form(request):
 
-def add_education_form(request):
+@login_required
+def add_education_form(request, slug):
+    if request.method == "POST":
+
+        form = EducationForm(request.POST)
+        slug = UserInfo.objects.get(user=request.user, slug=slug)
+        if form.is_valid():
+            board_or_univ = form.cleaned_data.get('board_or_univ')
+            course = form.cleaned_data.get('course')
+            cgpa_or_percent=form.cleaned_data.get('cgpa_or_percent')
+            cgpa=form.cleaned_data.get('cgpa')
+            add_education=Education(user=request.user,
+                                slug=slug,
+                                board_or_univ=board_or_univ,
+                                course=course,
+                                cgpa_or_percent=cgpa_or_percent,
+                                cgpa=cgpa
+                                )
+            add_education.save()
+            messages.success(request, "Education details is registered")
+            # return render(request, 'education_details_page.html',slug=slug)
+            # return redirect('Home:education_details_page',slug=slug)
+            # details = Skill.objects.filter(slug__slug=slug).all()
+            education_details=Education.objects.filter(slug__slug=slug).all()
+            return render(request,'add_education_form.html',{'education_details':education_details,'slug':slug})
+        
+        else:
+            messages.success(request,"something went wrong")
+    form = EducationForm()
+    return render(request, "add_education_form.html", {'form': form, 'slug': slug})
+
     return render(request,'add_education_form.html')
+@login_required
+def education_details_page(request,slug):
+    education_details=Education.objects.filter(slug__slug=slug).all()
+    return render(request,'education_details.html',{'education_details':education_details,'slug':slug})
 
-def education_details_page(request):
-    return render(request,'education_details.html')
 
 def add_expertise_form(request):
     return render(request,'add_expertise_form.html')
