@@ -1,50 +1,43 @@
-{%extends 'base.html' %}
-{%load static %}
-{%block title%}
-Provide your details
-{%endblock title%}
-{%block content%}
-<link rel="stylesheet"href="{% static 'home.css' %}"></link>
-
-  <div class="container">
+{% extends 'base.html' %}
+{%load static%}
+{% block title %}
+Experience info form
+{% endblock %}
+{% block content %}
+<link rel="stylesheet"href={%static 'home.css' %}></link>
+<div class="container mb-3" style="margin-top:50px;">
     <div class="row">
-        <div class="col-md-6">
-            <h2 class="mb-4">Provide projects details</h2>
-            <form>
-                <div class="row mb-3">
-                    <div class="col">
-                        <input type="text" class="form-control" placeholder="First name">
-                    </div>
-                    <div class="col">
-                        <input type="text" class="form-control" placeholder="Last name">
-                    </div>
-                </div>
-                <div class="mb-3">
-                    <input type="email" class="form-control" placeholder="Email">
-                </div>
-                <div class="mb-3">
-                    <input type="email" class="form-control" placeholder="Email">
-                </div>
-                <div class="mb-3">
-                    <input type="tel" class="form-control" placeholder="Mobile">
-                </div>
-                <div class="mb-3">
-                    <textarea class="form-control" placeholder="About"></textarea>
-                </div>
-             
-                <a href="{%url 'Home:project_details_page' %}"><button type="button" class="btn btn-primary btn-lg">Save and continue</button></a>
-               
-            </form>
-        </div>
-        <div class="col-md-6">
-            <img src="{%static 'img2.png' %}" alt="Image" class="img-fluid">
-        </div>
-        
-    </div>
-</div>
+        <div class="col-md-5 mt-3">
+        <div class="card-header bg-info mt-2"><strong>Add your projects</strong></div>
+           <form  method="POST" enctype="multipart/form-data">
+               {% csrf_token %}
+               <label for="id_orgainsation">Project Name</label>
+               <div class="form-group">
+                   <input type="text" class="form-control" placeholder="project name" name="project_name" maxlength="50" required id="id_project_name">
+               </div>
+               <label for="id_joining_date">Start date</label>
+               <div class="form-group">
+                   <input type="date" name="project_start_date" required id="id_project_start_date" class="form-control" placeholder="date format yyyy-mm-dd">
+               </div>
+               <label for="id_ending_date">Ending date:</label>
+               <div class="form-group">
+                   <input type="date" name="project_end_date" class="form-control" placeholder="date format yyyy-mm-dd"  id="id_project_end_date">
+               </div>
+               <label for="id_work_experience">Explain your project</label>
+               <div class="form-group">
+                   <textarea name="project_desc" class="form-control" placeholder="Explain your project here... " cols="40" rows="10" required id="id_project_desc">
+                   </textarea>
+               </div>
 
-  
-  
-  
-      
-{%endblock content%}
+                <input class="button btn-primary" type="submit" value="Save">
+                <a href="{% url 'Home:project_details_page' slug %}" class="button btn-primary">check project details</a>
+
+                
+               </form>
+             {% comment %} <a href="{% url 'home:experience-details' slug %}" class="button btn-warning">Skip</a> {% endcomment %}
+        </div>
+    </div>
+
+
+</div>
+{%endblock%}

@@ -171,7 +171,7 @@ def add_project_form(request,slug):
         if request.method=="POST":
             form=ProjectForm(request.POST)
             slug=UserInfo.objects.get(user=request.user,slug=slug)
-            if form.is_Valid():
+            if form.is_valid():
                 project_name=form.cleaned_data.get('project_name')
                 project_desc=form.cleaned_data.get('project_desc')
                 project_start_date=form.cleaned_data.get('project_start_date')
@@ -196,9 +196,11 @@ def add_project_form(request,slug):
     except:
         messages(request,"We are facing some issues")
     # return render(request,'add_project_form.html')
-
-def project_details_page(request):
-    return render(request,'project_details.html')
+@login_required
+def project_details_page(request,slug):
+    project_details=Project.objects.filter(slug__slug=slug).all()
+    return render(request,"project_details.html",{'project_details':project_details,'slug':slug})
+    # return render(request,'project_details.html')
 
 # @login_required
 # def user_portfolios(request):
