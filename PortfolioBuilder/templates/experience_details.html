@@ -1,48 +1,35 @@
 {% extends 'base.html' %}
-{%load static%}
+
+{% block title %}
+Experience Details
+{% endblock %}
+
 
 {% block content %}
 
-<link rel="stylesheet"href="{% static 'home.css' %}"></link>
-
-<div class="container">
+<div class="container mb-3" style="margin-top:20px;">
+    <div class="card-header bg-info mt-2"><strong>Your Past Experiences</strong></div>
     <div class="row">
-        <div class="col-md-6">
-            <h2>Your experience details</h2>
-            <p>Please review the details below:</p>
-            <table class="table">
-                <tbody>
-                    <tr>
-                        <th>First Name:</th>
-                        <td>John</td>
-                    </tr>
-                    <tr>
-                        <th>Last Name:</th>
-                        <td>Doe</td>
-                    </tr>
-                    <tr>
-                        <th>Email:</th>
-                        <td>john.doe@example.com</td>
-                    </tr>
-                    <tr>
-                        <th>Mobile No:</th>
-                        <td>1234567890</td>
-                    </tr>
-                    <tr>
-                        <th>Place:</th>
-                        <td>New York</td>
-                    </tr>
-                    
-                </tbody>
-            </table>
-            <a href="{%url 'Home:add_experience_form'%}"><button type="button" class="btn btn-primary mx-2">Add more experience</button></a>
-            <a href="{%url 'Home:add_project_form'%}"><button type="button" class="btn btn-primary">Save and continue</button></a>
-          
+        {% for experience in experience_details %}
+        <div class="col-sm-4 mt-3 mb-2">
+
+                <div class="card p-2 bg-white  font-weight-bolder">
+                    <div class="card-header bg-light">{{experience.organisation_name}}</div>
+                    <div class="card-body text-center text-dark">
+                        <div class="card-header bg-light">{{experience.position}}</div>
+                      <p class="card-text">{{experience.joining_date}}-{% if details.ending_date == None %} present {% else %} {{experience.ending_date}} {% endif %} </p>
+                        <p class="card-text">{{experience.work_experience}}</p>
+                    </div>
+                    {% comment %} <a class="btn mx-auto btn-outline-dark" href="{% url 'home:update-experience' slug details.organisation_name %}" >edit</a> {% endcomment %}
+                    {% comment %} <a class="btn mx-auto  btn-outline-dark" href="{% url 'home:delete-experience' slug details.organisation_name %}" >delete</a> {% endcomment %}
+                </div>
+
         </div>
+        {% endfor %}
+
     </div>
+    {% comment %} <a href="{% url 'home:experience' slug %}" class="button btn-outline-primary">Add more</a> {% endcomment %}
+    {% comment %} <a href="{% url 'home:create' slug %}" class="button btn-warning">Create Portfolio</a> {% endcomment %}
+
 </div>
-  
-
-
-
 {% endblock %}

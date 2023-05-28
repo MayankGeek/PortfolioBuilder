@@ -20,7 +20,7 @@ class EducationForm(forms.ModelForm):
 class ExperienceForm(forms.ModelForm):
     class Meta:
         model=Experience
-        fields=['organisation_name','role','joining_date','ending_date','work_experience']
+        fields=['organisation_name','position','joining_date','ending_date','work_experience']
 
 
 

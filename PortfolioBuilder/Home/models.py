@@ -73,7 +73,7 @@ class Experience(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, blank=True, null=True)
     slug = models.ForeignKey(UserInfo, on_delete=models.SET_NULL, blank=True, null=True)
     organisation_name = models.CharField(max_length=50, null=True, blank=True)
-    role = models.CharField(max_length=50, null=True, blank=True)
+    position = models.CharField(max_length=50, null=True, blank=True)
     joining_date = models.DateField()
     ending_date = models.DateField( blank=True, null=True)
     work_experience = models.TextField()

@@ -1,7 +1,7 @@
 from django.shortcuts import render,HttpResponse,redirect,get_object_or_404
-from .forms import UserInfoForm,AddSkillForm,EducationForm
+from .forms import UserInfoForm,AddSkillForm,EducationForm,ExperienceForm
 from django.contrib.auth.decorators import login_required
-from Home.models import UserInfo,Skill,Education
+from Home.models import UserInfo,Skill,Education,Experience
 from django.contrib import messages
 
 # Create your views here.
@@ -131,11 +131,40 @@ def add_expertise_form(request):
 def expertise_details_page(request):
     return render(request,'expertise_details.html')
 
-def add_experience_form(request):
-    return render(request,'add_experience_form.html')
+@login_required
+def add_experience_form(request,slug):
+    try:
+        if request.method=="POST":
+            form=ExperienceForm(request.POST)
+            slug=UserInfo.objects.get(user=request.user,slug=slug)
+            if form.is_valid():
+                organisation_name=form.cleaned_data.get('organisation_name')
+                position=form.cleaned_data.get('position')
+                joining_date=form.cleaned_data.get('joining_date')
+                ending_date=form.cleaned_data.get('ending_date')
+                work_experience=form.cleaned_data.get('work_experience')
+                add_experience=Experience(user=request.user,
+                                          slug=slug,
+                                          organisation_name=organisation_name,
+                                          position=position,
+                                          joining_date=joining_date,
+                                          ending_date=ending_date,
+                                          work_experience=work_experience
+                )
+                add_experience.save()
+                messages.success(request,"Experience added successfully")
+                experience_details=Experience.objects.filter(slug__slug=slug).all()
+                return render(request,"add_experience_form.html",{'experience_detail':experience_details,'slug':slug})
+            else:
+                messages.success("Something went wrong")
+        form=ExperienceForm()
+        return render(request,"add_experience_form.html",{'form':form,'slug':slug})
+    except:
+        messages.success("we are facing some issue!")
 
-def experience_details_page(request):
-    return render(request,'experience_details.html')
+def experience_details_page(request,slug):
+    experience_details=Experience.objects.filter(slug__slug=slug).all()
+    return render(request,"experience_details.html",{'experience_details':experience_details,'slug':slug})
 
 def add_project_form(request):
     return render(request,'add_project_form.html')
