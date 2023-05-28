@@ -1,5 +1,5 @@
 from django import forms
-from .models import UserInfo,Skill,Education,Experience
+from .models import UserInfo,Skill,Education,Experience,Project
 
 class UserInfoForm(forms.ModelForm):
     class Meta:
@@ -21,6 +21,11 @@ class ExperienceForm(forms.ModelForm):
     class Meta:
         model=Experience
         fields=['organisation_name','position','joining_date','ending_date','work_experience']
+
+class ProjectForm(forms.ModelForm):
+    class Meta:
+        model=Project
+        fields=['project_name','project_desc','project_start_date','project_end_date','project_link']
 
 
 

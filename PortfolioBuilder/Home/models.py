@@ -47,14 +47,6 @@ class Skill(models.Model):
     slug = models.ForeignKey(UserInfo, on_delete=models.SET_NULL, blank=True, null=True)
     skill = models.CharField(max_length=50, null=True, blank=True)
     percent = models.DecimalField(max_digits=4, decimal_places=2,default=0.0)
-    # skill2 = models.CharField(max_length=50, null=True, blank=True)
-    # percent2 = models.DecimalField(max_digits=4, decimal_places=2,default=0.0)
-    # skill3 = models.CharField(max_length=50, null=True, blank=True)
-    # percent3 = models.DecimalField(max_digits=4, decimal_places=2,default=0.0)
-    # skill4 = models.CharField(max_length=50, null=True, blank=True)
-    # percent4 = models.DecimalField(max_digits=4, decimal_places=2,default=0.0)
-    # skill5 = models.CharField(max_length=50, null=True, blank=True)
-    # percent5 = models.DecimalField(max_digits=4, decimal_places=2,default=0.0)
     def __str__(self):
         return self.slug.name
 
@@ -77,6 +69,19 @@ class Experience(models.Model):
     joining_date = models.DateField()
     ending_date = models.DateField( blank=True, null=True)
     work_experience = models.TextField()
+
+    def __str__(self):
+        return self.slug.name
+    
+class Project(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, blank=True, null=True)
+    slug = models.ForeignKey(UserInfo, on_delete=models.SET_NULL, blank=True, null=True)
+    project_name = models.CharField(max_length=50, null=True, blank=True)
+    project_desc = models.TextField()
+    project_start_date = models.DateField()
+    project_end_date = models.DateField( blank=True, null=True)
+    project_link = models.CharField(max_length=2084, null=True, blank=True)
+
 
     def __str__(self):
         return self.slug.name

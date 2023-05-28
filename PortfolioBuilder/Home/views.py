@@ -1,7 +1,7 @@
 from django.shortcuts import render,HttpResponse,redirect,get_object_or_404
-from .forms import UserInfoForm,AddSkillForm,EducationForm,ExperienceForm
+from .forms import UserInfoForm,AddSkillForm,EducationForm,ExperienceForm,ProjectForm
 from django.contrib.auth.decorators import login_required
-from Home.models import UserInfo,Skill,Education,Experience
+from Home.models import UserInfo,Skill,Education,Experience,Project
 from django.contrib import messages
 
 # Create your views here.
@@ -90,7 +90,6 @@ def skill_details_page(request,slug):
 @login_required
 def add_education_form(request, slug):
     if request.method == "POST":
-
         form = EducationForm(request.POST)
         slug = UserInfo.objects.get(user=request.user, slug=slug)
         if form.is_valid():
@@ -166,8 +165,37 @@ def experience_details_page(request,slug):
     experience_details=Experience.objects.filter(slug__slug=slug).all()
     return render(request,"experience_details.html",{'experience_details':experience_details,'slug':slug})
 
-def add_project_form(request):
-    return render(request,'add_project_form.html')
+@login_required
+def add_project_form(request,slug):
+    try:
+        if request.method=="POST":
+            form=ProjectForm(request.POST)
+            slug=UserInfo.objects.get(user=request.user,slug=slug)
+            if form.is_Valid():
+                project_name=form.cleaned_data.get('project_name')
+                project_desc=form.cleaned_data.get('project_desc')
+                project_start_date=form.cleaned_data.get('project_start_date')
+                project_end_date=form.cleaned_data.get('project_end_date')
+                project_link=form.cleaned_data.get('project_link')
+                add_project=Project(user=request.user,
+                                    slug=slug,
+                                    project_name=project_name,
+                                    project_desc=project_desc,
+                                    project_start_date=project_start_date,
+                                    project_end_date=project_end_date,
+                                    project_link=project_link
+                                    )
+                add_project.save()
+                messages.success(request,"Project added successfully")
+                project_details=Project.objects.filter(slug__slug=slug).all()
+                return render(request,"add_project_form.html",{'project_details':project_details,'slug':slug})
+            else:
+                messages.success("somethin went wrong")
+        form=ProjectForm()
+        return render(request,"add_project_form.html",{'form':form,'slug':slug})
+    except:
+        messages(request,"We are facing some issues")
+    # return render(request,'add_project_form.html')
 
 def project_details_page(request):
     return render(request,'project_details.html')
