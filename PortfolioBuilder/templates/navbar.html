@@ -14,6 +14,8 @@
       <a class="navbar-brand" href="{% url 'Home:home' %}"><b>Hi, {{user.get_username}}</b></a>
       {% else %}
       <a class="navbar-brand" href="{% url 'Home:home' %}">Home</a>
+      <a class="navbar-brand" href="{% url 'Home:home' %}">About</a>
+      <a class="navbar-brand" href="{% url 'Home:home' %}">Contact</a>
       {% endif %}
       </ul>
       <form class="d-flex">

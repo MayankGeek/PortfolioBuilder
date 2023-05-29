@@ -31,10 +31,9 @@ img {
   }
   .btn-primary {
     background: linear-gradient(to right, #f76a8c, #ff5757);
-    border-radius: 50px;
     border: none;
     padding: 0.5rem 1.5rem;
-    font-size: 0.85rem;
+    font-size: 0.99rem;
     color: #fff;
     transition: all 0.3s ease;
   }
@@ -88,7 +87,7 @@ img {
     font-size: 1rem;
     padding: 0.5rem 1rem;
   }
-  
+
   .form {
     box-shadow: none;
     padding: 10px;
