@@ -8,7 +8,7 @@
   <div class="row justify-content-center">
     <div class="col-lg-6 col-md-8">
       {% if user_portfolios %}
-        <p class="h3 text-center" style="padding-top:10px;">Your Portfolios</p><br>
+        <p class="h3 text-center" style="padding-top: 10px;">Your Portfolios</p><br>
         <form method="POST">
           {% csrf_token %}
           {% for portfolio in user_portfolios %}
