@@ -1,67 +1,67 @@
 {% extends 'base.html' %}
-{%load static%}
+{% load static %}
+
 {% block title %}
-    skill form
+    Skill Form
 {% endblock %}
 
 {% block content %}
-<link rel="stylesheet" href="{% static 'home.css' %}">
-
+<link rel="stylesheet" href="{% static 'add_skill.css' %}"></link>
 <div class="container mb-3" style="margin-top: 50px;">
     <div class="row justify-content-center">
-        <div class="col-md-5 text-center">
-            <!-- Removed the panel and its contents -->
-        </div>
-    </div>
-    <div class="row justify-content-center mt-3">
         <div class="col-md-6">
             <div class="card shadow">
                 <h2 class="mb-4 text-center">Add your skills</h2>
                 <div class="card-body">
                     <form method="POST" enctype="multipart/form-data">
                         {% csrf_token %}
-                        <div class="row justify-content-center">
-                            <div class="col-md-5">
+                        <div class="row mb-3">
+                            <div class="col-md-6">
                                 <label for="id_skill1">Skill:</label>
                                 <div class="form-group">
                                     <input type="text" class="form-control" placeholder="Skill Name" required name="skill" maxlength="50" id="id_skill1">
                                 </div>
                             </div>
-                            <div class="col-md-5">
+                            <div class="col-md-6">
                                 <label for="id_percent1">Percentage:</label>
                                 <div class="form-group">
                                     <input type="number" class="form-control" placeholder="80" step="0.01" name="percent" required id="id_percent1">
                                 </div>
                             </div>
                         </div>  
-                        <table class="table table-bordered table-hover custom-table">
-                            <tr>
-                                <th>Skill Name</th>
-                                <th>Level Percentage</th>
-                            </tr>
-                            
-                            {% for detail in details %}
-                            <tr>
-                                <td>{{ detail.skill }}</td>
-                                <td>
-                                    <div class="progress">
-                                        <div class="progress-bar" role="progressbar" style="width: {{ detail.percent }}%;" aria-valuenow="{{ detail.percent }}" aria-valuemin="0" aria-valuemax="100">{{ detail.percent1 }}%</div>
-                                    </div>
-                                </td>
-                            </tr>
-                            
-                            
-                            {% endfor %}
-                        </table>
-                       
+                        
+                        <div class="table-responsive">
+                            {% if details %}
+                            <table class="table table-bordered table-hover custom-table">
+                                <thead>
+                                    <tr>
+                                        <th>Skill Name</th>
+                                        <th>Level Percentage</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for detail in details %}
+                                    <tr>
+                                        <td><strong>{{ detail.skill }}</strong></td>
+                                        <td>
+                                            <div class="progress">
+                                                <div class="progress-bar" role="progressbar" style="width: {{ detail.percent }}%;" aria-valuenow="{{ detail.percent }}" aria-valuemin="0" aria-valuemax="100">{{ detail.percent }}%</div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                            {% endif %}
+                        </div>
                         <div class="row justify-content-center">
                             <div class="col-md-12 text-center">
-                                <input class="button btn-primary" type="submit" value="Save and continue">
-                                {% comment %} <input class="button btn-primary" type="submit" value="Save and continue"> {% endcomment %}
-                                <a href="{% url 'Home:skill_details_page' slug %}" class="button btn-primary">Check skills you have added</a>
-
+                                <div class="btn-group" role="group" aria-label="Buttons">
+                                    <input class="btn btn-primary mx-2" type="submit" value="Save and Continue">
+                                    <a href="{% url 'Home:skill_details_page' slug %}" class="btn btn-primary mx-2">Check Skills You Have Added</a>
+                                </div>
                             </div>
-                        </div> 
+                        </div>
                     </form>
                 </div>
             </div>

@@ -8,7 +8,7 @@
     <div class="container">
         <link rel="stylesheet" href="{% static 'home.css' %}">
         <div class="row">
-            <div class="col-md-8 offset-md-2 mt-0x"> <!-- Increase the margin-top value to move the form up -->
+            <div class="col-md-8 offset-md-2 mt-0x">
                 <div style="box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); padding: 20px;">
                     <div class="row">
                         <div class="col-md-6">
@@ -31,14 +31,21 @@
                             </form>
                         </div>
                         <div class="col-md-6 d-flex align-items-center justify-content-center">
-                            <div>
-                                <img src="{% static 'signup.jpg' %}" alt="Random Image" class="card-img-top" style="width: 100%; height: auto;">
+                            <div class="image-container">
+                                <img src="{% static 'signup.jpg' %}" alt="Random Image" class="card-img-top">
                             </div>
                         </div>
-                        
                     </div>
                 </div>
             </div>
-        </div>
+        </div>  
     </div>
+
+    <style>
+        @media only screen and (max-width: 767px) {
+            .image-container {
+                display: none;
+            }
+        }
+    </style>
 {% endblock content %}

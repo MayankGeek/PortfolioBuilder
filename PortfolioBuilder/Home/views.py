@@ -212,7 +212,6 @@ def project_details_page(request,slug):
 def user_portfolios(request):
     context = {}
     portfolios = UserInfo.objects.filter(user=request.user).all()
-    
     if not portfolios:
         # context['message'] = "No portfolios created."
         messages.success(request,"You don't any portfolios created please create one now !")
