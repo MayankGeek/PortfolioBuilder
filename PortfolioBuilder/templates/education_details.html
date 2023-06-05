@@ -1,72 +1,38 @@
 {% extends 'base.html' %}
-{%load static%}
+{% load static %}
 {% block title %}
 Skills Details
 {% endblock %}
 
 {% block content %}
-<link rel="stylesheet"href="{% static 'home.css' %}"></link>
+<link rel="stylesheet" href="{% static 'home.css' %}">
 
 <div class="container mb-3" style="margin-top: 50px;">
     <div class="container text-center"><strong>Your education details</strong></div><br>
 
-    <table class="table table-bordered table-hover custom-table">
+    <table class="table table-bordered table-hover custom-table shadow">
         <tr>
             <th>College Name</th>
             <th>Course Name</th>
-            <th>Course Name</th>
+            <th>CGPA/Percent</th>
         </tr>
         
         {% for education in education_details %}
         <tr>
             <td>{{ education.board_or_univ }}</td>
             <td>
-            {{ education.board_or_univ }}
+                {{ education.board_or_univ }}
             </td>
             <td>
-            {{ education.course }}
+                {{ education.cgpa_or_percent }}
             </td>
         </tr>
-        
-        {% comment %} <tr>
-            <td>{{ detail.skill2 }}</td>
-            <td>
-                <div class="progress">
-                    <div class="progress-bar" role="progressbar" style="width: {{ detail.percent2 }}%;" aria-valuenow="{{ detail.percent2 }}" aria-valuemin="0" aria-valuemax="100">{{ detail.percent2 }}%</div>
-                </div>
-            </td>
-        </tr>
-        
-        <tr>
-            <td>{{ detail.skill3 }}</td>
-            <td>
-                <div class="progress">
-                    <div class="progress-bar" role="progressbar" style="width: {{ detail.percent3 }}%;" aria-valuenow="{{ detail.percent3 }}" aria-valuemin="0" aria-valuemax="100">{{ detail.percent3 }}%</div>
-                </div>
-            </td>
-        </tr>
-        
-        <tr>
-            <td>{{ detail.skill4 }}</td>
-            <td>
-                <div class="progress">
-                    <div class="progress-bar" role="progressbar" style="width: {{ detail.percent4 }}%;" aria-valuenow="{{ detail.percent4 }}" aria-valuemin="0" aria-valuemax="100">{{ detail.percent4 }}%</div>
-                </div>
-            </td>
-        </tr>
-        
-        <tr>
-            <td>{{ detail.skill5 }}</td>
-            <td>
-                <div class="progress">
-                    <div class="progress-bar" role="progressbar" style="width: {{ detail.percent5 }}%;" aria-valuenow="{{ detail.percent5 }}" aria-valuemin="0" aria-valuemax="100">{{ detail.percent5 }}%</div>
-                </div>
-            </td>
-        </tr>  {% endcomment %}
         {% endfor %}
     </table>
 
-    <a href="{% url 'Home:add_education_form' slug %}" class="button btn-primary">Add More education</a>
-    <a href="{% url 'Home:add_experience_form' slug %}" class="button btn-primary">Add experience</a>
+    <div class="text-center mt-3">
+        <a href="{% url 'Home:add_education_form' slug %}" class="btn btn-primary mx-2">Add education</a>
+        <a href="{% url 'Home:add_experience_form' slug %}" class="btn btn-primary mx-2">Add experience</a>
+    </div>
 </div>
 {% endblock %}

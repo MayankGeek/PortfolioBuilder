@@ -1,36 +1,40 @@
 {% extends 'base.html' %}
-{%load static%}
+{% load static %}
 {% block title %}
 Experience Details
 {% endblock %}
 
 {% block content %}
-<link rel="stylesheet"href={%static 'home.css' %}></link>
+<link rel="stylesheet" href="{% static 'home.css' %}">
 
-<div class="container mb-3" style="margin-top:20px;">
-    <div class="card-header bg-info mt-2"><strong>Your added projects</strong></div>
-    <div class="row">
+<div class="container mb-3" style="margin-top: 20px;">
+    <div class="container text-center">
+        <h2 class="text-center mb-4">Your Project</h2>
+    </div><br>
+    <div class="row justify-content-center"> <!-- Added justify-content-center class -->
         {% for project in project_details %}
         <div class="col-sm-4 mt-3 mb-2">
 
-                <div class="card p-2 bg-white  font-weight-bolder">
-                    <div class="card-header bg-light">{{project.project_name}}</div>
+                <div class="card p-2 bg-white shadow rounded"> <!-- Added shadow and rounded classes -->
+                    <div class="card-header bg-light text-center"><strong>{{ project.project_name }}</strong></div>
                     <div class="card-body text-center text-dark">
-                        <div class="card-header bg-light">{{project.project_start_date}}</div>
-                      <p class="card-text">{{project.project_start_date}}-{% if project.project_end_date == None %} present {% else %} {{project.project_end_date}} {% endif %} </p>
-                        <p class="card-text">{{project.project_desc}}</p>
+                        <div class="card-header bg-light">{{ project.project_start_date }}</div>
+                      <p class="card-text">{{ project.project_start_date }}-{% if project.project_end_date == None %} present {% else %} {{ project.project_end_date }} {% endif %}</p>
+                        <p class="card-text">{{ project.project_desc }}</p>
                     </div>
-                    {% comment %} <a class="btn mx-auto btn-outline-dark" href="{% url 'home:update-experience' slug details.organisation_name %}" >edit</a> {% endcomment %}
-                    {% comment %} <a class="btn mx-auto  btn-outline-dark" href="{% url 'home:delete-experience' slug details.organisation_name %}" >delete</a> {% endcomment %}
+                    {% comment %}
+                    <a class="btn mx-auto btn-outline-dark" href="{% url 'home:update-experience' slug details.organisation_name %}">edit</a>
+                    <a class="btn mx-auto btn-outline-dark" href="{% url 'home:delete-experience' slug details.organisation_name %}">delete</a>
+                    {% endcomment %}
                 </div>
 
         </div>
         {% endfor %}
-
     </div>
-    <a href="{% url 'Home:add_project_form' slug %}" class="button btn-primary">Add project</a>
-    <a href="{% url 'Home:add_project_form' slug %}" class="button btn-primary">Create portfolio</a>
-    {% comment %} <a href="{% url 'home:create' slug %}" class="button btn-warning">Create Portfolio</a> {% endcomment %}
 
+    <div class="text-center mt-3">
+        <a href="{% url 'Home:add_project_form' slug %}" class="btn btn-primary mx-2">Add project</a>
+        <a href="{% url 'Home:add_project_form' slug %}" class="btn btn-primary mx-2">Create portfolio</a>
+    </div>
 </div>
 {% endblock %}
