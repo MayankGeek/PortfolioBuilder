@@ -1,0 +1,26 @@
+.navbar {
+    background-image: linear-gradient(to right, #667eea, #764ba2);
+  }
+  .container {
+    background-image: linear-gradient(to bottom, #ffffff, #f8f9fa);
+  }
+  .container {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+  }
+  .section-title h1 {
+    background-image: linear-gradient(to right, #667eea, #764ba2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1s, transform 1s;
+  }
+  
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+          

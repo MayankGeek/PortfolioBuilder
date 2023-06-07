@@ -109,8 +109,19 @@ Home
         }
       </style>
       <div class="container">
-        <footer>
-          <p>&copy; 2023 Your Website. All rights reserved.</p>
+        <footer class="d-flex flex-column flex-md-row justify-content-between align-items-center" style="margin-top: auto;">
+          <div class="text-center text-md-start mb-3 mb-md-0">
+            <img src="{% static 'logo.png' %}" alt="Logo" style="height: 80px; width: auto;">
+            Portify | © 2023 Portify
+          </div>
+          <div class="text-center text-md-end">
+            <a href="#" class="me-3"><img src="{% static 'github.png' %}" style="height: 30px; width: auto;" alt="GitHub"></a>
+            <a href="#" class="me-3"><img src="{% static 'twitter.png' %}"style="height: 30px; width: auto;" alt="Twitter"></a>
+            <a href="#"><img src="{% static 'insta.png' %}" style="height: 30px; width: auto;" alt="Instagram"></a>
+          </div>
         </footer>
       </div>
+      
+      
+      
 {% endblock content %}
