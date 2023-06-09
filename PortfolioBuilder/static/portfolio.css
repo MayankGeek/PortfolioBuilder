@@ -702,3 +702,66 @@ textarea {
   to {
     opacity: 0;
     top: 27px; } }
+    .skills-container {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    
+    .card {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      margin-bottom: 10px;
+    }
+    
+    .card__skill {
+      flex: 1;
+      margin-right: 10px;
+      text-align: right;
+    }
+    
+    .card__progress {
+      flex: 3;
+      height: 16px;
+      /* background-color: white; */
+      position: relative;
+      overflow: hidden;
+      border-radius: 15px;
+      border: 1px solid green;
+      overflow: hidden;
+    }
+    
+    .progress-bar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      background-color: green;
+      overflow: hidden;
+      
+      
+      
+    }
+
+  
+    
+    @keyframes progressBarAnimation {
+      from {
+        width: 0;
+      }
+    }
+    
+    .card__percent {
+      flex: 1;
+      margin-left: 10px;
+      text-align: left;
+    }
+    
+    @media (max-width: 768px) {
+      .card__skill,
+      .card__percent {
+        flex: 1;
+        text-align: center;
+      }
+    }
+    

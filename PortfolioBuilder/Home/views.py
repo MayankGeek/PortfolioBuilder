@@ -224,7 +224,7 @@ def create_portfolio(request,slug):
     portfolio_data={}
     portfolio_data['user_info']=UserInfo.objects.get(slug=slug)
     name=UserInfo.objects.get(slug=slug)
-    print(name)
+    # print(name)
     portfolio_data['education']=Education.objects.filter(slug=name).all()
     portfolio_data['skills']=Skill.objects.filter(slug=name).all()
     portfolio_data['experience']=Experience.objects.filter(slug=name).all()

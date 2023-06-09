@@ -158,52 +158,88 @@
           <span class="heading-sec__sub">
             {{portfolio_data.user_info.about}}
           </span>
-        </h2>
-        <div class="about__content">
-          <div class="about__content-main">
-            <h3 class="about__content-title">Get to know me!</h3>
-            <div class="about__content-details">
-              <p class="about__content-details-para">
-                Hey! It's
-                <strong>John Doe</strong>
-                and I'm a <strong> Frontend Web Developer </strong> located in
-                Los Angeles. I've done
-                <strong> remote </strong>
-                projects for agencies, consulted for startups, and collaborated
-                with talented people to create
-                <strong>digital products </strong>
-                for both business and consumer use.
-              </p>
-              <p class="about__content-details-para">
-                I'm a bit of a digital product junky. Over the years, I've used
-                hundreds of web and mobile apps in different industries and
-                verticals. Feel free to
-                <strong>contact</strong> me here.
-              </p>
-            </div>
-            <a href="./#contact" class="btn btn--med btn--theme dynamicBgClr"
-              >Contact</a
-            >
-          </div>
-          <div class="about__content-skills">
+        </h2> 
+        {% comment %} <div class="about__content-skills">
             <h3 class="about__content-title">My Skills</h3>
+            {% for skills in portfolio_data.skills %}
             <div class="skills">
-              <div class="skills__skill">{{portfolio_data.skills}}</div>
-              <div class="skills__skill">CSS</div>
-              <div class="skills__skill">JavaScript</div>
-              <div class="skills__skill">React</div>
-              <div class="skills__skill">SASS</div>
-              <div class="skills__skill">GIT</div>
-              <div class="skills__skill">Shopify</div>
-              <div class="skills__skill">Wordpress</div>
-              <div class="skills__skill">Google ADS</div>
-              <div class="skills__skill">Facebook Ads</div>
-              <div class="skills__skill">Android</div>
-              <div class="skills__skill">IOS</div>
+              <div class="skills__skill">{{skills.skill}}</div>
+              <div class="skills__skill">{{skills.percent}}</div>
             </div>
           </div>
         </div>
+      </div> 
+      {%endfor%} {% endcomment %}
+
+      <div class="about__content-skills">
+        <h3 class="about__content-title" style="text-align: center;">My Skills</h3>
+        <div class="skills-container">
+          {% for skills in portfolio_data.skills %}
+          <div class="card">
+            <div class="card__skill">{{skills.skill}}</div>
+            <div class="card__progress">
+              <div class="progress-bar" style="width: {{skills.percent}}%; height: 15px; background-color: #37b649;">
+                <div class="progress-bar__text" style="color: white; font-weight: bold; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">{{skills.percent}}%</div>
+              </div>
+            </div>
+            <div class="card__percent"></div>
+          </div>
+          {% endfor %}
+        </div>
       </div>
+      
+      
+      
+      
+      
+      
+
+
+
+
+      <!--TESTING CODE for skill details-->
+      {% comment %} {% for skills in portfolio_data.skills %}
+<table>
+    <thead>
+    <tr>
+        <th>Qualification</th>
+        <th>Board or University</th>
+        <th>School Or College</th>
+        <th>Percentage / CGPA</th>
+
+    </tr>
+    </thead>
+    <tr>
+        
+        <td>{{skills.skill}}</td>
+        <td>{{skills.percent}}</td>
+       
+    </tr>
+</table>
+{% endfor %}
+</div> {% endcomment %}
+
+      <!--TESTING CODE for education details-->
+      {% comment %} {% for edu in portfolio_data.education %}
+<table>
+    <thead>
+    <tr>
+        <th>Qualification</th>
+        <th>Board or University</th>
+        <th>School Or College</th>
+        <th>Percentage / CGPA</th>
+
+    </tr>
+    </thead>
+    <tr>
+        
+        <td>{{edu.board_or_univ}}</td>
+        <td>{{edu.course}}</td>
+        <td>{{edu.cgpa_or_percent}}</td>
+    </tr>
+</table>
+{% endfor %}
+</div> {% endcomment %}
     </section>
     <section id="projects" class="projects sec-pad">
       <div class="main-container">
