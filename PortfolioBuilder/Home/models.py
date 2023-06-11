@@ -85,3 +85,12 @@ class Project(models.Model):
 
     def __str__(self):
         return self.slug.name
+
+# class SocialLinks(models.Model):
+#     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, blank=True, null=True)
+#     slug = models.ForeignKey(UserInfo, on_delete=models.SET_NULL, blank=True, null=True)
+#     linked_url= models.URLField(max_length=250,null=True, blank=True)
+#     instagram_url= models.URLField(max_length=250,null=True, blank=True)
+#     twitter_url= models.URLField(max_length=250,null=True, blank=True)
+#     def __str__(self):
+#         return self.slug.name

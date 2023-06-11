@@ -27,6 +27,11 @@ class ProjectForm(forms.ModelForm):
         model=Project
         fields=['project_name','project_desc','project_start_date','project_end_date','project_link']
 
+# class SocialForm(forms.ModelForm):
+#     class Meta:
+#         model=Project
+#         fields=['linkedin_url','instagram_url','twitter_url']
+
 
 
 

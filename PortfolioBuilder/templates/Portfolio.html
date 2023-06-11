@@ -6,21 +6,19 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Dopefolio</title>
+    <title>{{portfolio_data.user_info.name}}</title>
     <meta name="description" content="Portfolio Template for Developer" />
-
-    <link rel="stylesheet" href="css/style.css" />
-
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700;900&display=swap"
       rel="stylesheet"
     />
+    
   </head>
   <body>
     <link rel="stylesheet" href="{% static 'portfolio.css' %}"></link>
-    <header class="header">
+     <header class="header">
       <div class="header__content">
         <div class="header__logo-container">
           <div class="header__logo-img-cont">
@@ -51,12 +49,12 @@
           </ul>
           <div class="header__main-ham-menu-cont">
             <img
-              src="./assets/svg/ham-menu.svg"
+              src="{%static 'ham-menu.svg'%}"
               alt="hamburger menu"
               class="header__main-ham-menu"
             />
             <img
-              src="./assets/svg/ham-menu-close.svg"
+              src="{%static 'ham-menu-close.svg'%}"
               alt="hamburger menu close"
               class="header__main-ham-menu-close d-none"
             />
@@ -84,7 +82,11 @@
           </ul>
         </div>
       </div>
-    </header>
+    </header> 
+    
+
+    
+    
     <section class="home-hero">
       <div class="home-hero__content">
         <h2 class="heading-primary">Hey, My name is {{portfolio_data.user_info.name}}</h2>
@@ -95,56 +97,6 @@
         </div>
         <div class="home-hero__cta">
           <a href="./#projects" class="btn btn--bg">Download CV</a>
-        </div>
-      </div>
-      <div class="home-hero__socials">
-        <div class="home-hero__social">
-          <a href="#" class="home-hero__social-icon-link">
-            <img
-              src="./assets/png/linkedin-ico.png"
-              alt="icon"
-              class="home-hero__social-icon"
-            />
-          </a>
-        </div>
-        <div class="home-hero__social">
-          <a href="#" class="home-hero__social-icon-link">
-            <img
-              src="./assets/png/github-ico.png"
-              alt="icon"
-              class="home-hero__social-icon"
-            />
-          </a>
-        </div>
-        <div class="home-hero__social">
-          <a href="#" class="home-hero__social-icon-link">
-            <img
-              src="./assets/png/twitter-ico.png"
-              alt="icon"
-              class="home-hero__social-icon"
-            />
-          </a>
-        </div>
-        <div class="home-hero__social">
-          <a href="#" class="home-hero__social-icon-link">
-            <img
-              src="./assets/png/yt-ico.png"
-              alt="icon"
-              class="home-hero__social-icon"
-            />
-          </a>
-        </div>
-        <div class="home-hero__social">
-          <a
-            href="#"
-            class="home-hero__social-icon-link home-hero__social-icon-link--bd-none"
-          >
-            <img
-              src="./assets/png/insta-ico.png"
-              alt="icon"
-              class="home-hero__social-icon"
-            />
-          </a>
         </div>
       </div>
       <div class="home-hero__mouse-scroll-cont">
@@ -159,6 +111,21 @@
             {{portfolio_data.user_info.about}}
           </span>
         </h2> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
         {% comment %} <div class="about__content-skills">
             <h3 class="about__content-title">My Skills</h3>
             {% for skills in portfolio_data.skills %}
@@ -189,15 +156,6 @@
         </div>
       </div>
       
-      
-      
-      
-      
-      
-
-
-
-
       <!--TESTING CODE for skill details-->
       {% comment %} {% for skills in portfolio_data.skills %}
 <table>
@@ -241,8 +199,55 @@
 </table>
 {% endfor %}
 </div> {% endcomment %}
+
+<!--WORK EXPERIENCE CODE-->
+<section id="projects" class="projects sec-pad">
+  <div class="main-container">
+    <h2 class="heading heading-sec heading-sec__mb-bg text-center">
+      {% if portfolio_data.experience %}
+        <span class="heading-sec__main">WORK EXPERIENCE</span>
+      {% endif %}
+    </h2>
+    <div class="new-card-wrapper">
+      {% for experience in portfolio_data.experience %}
+        <div class="new-card">
+          <div class="new-card-body">
+            <h5 class="new-card-title">{{ experience.organisation_name }}</h5>
+            <p class="new-card-text">{{experience.position}}.</p>
+            <p class="new-card-text">{{experience.work_experience}}.</p>
+            <a href="#" class="btn btn-primary btn-gradient">
+              {{ experience.joining_date }}-{% if experience.ending_date %}{{ experience.ending_date }}{% else %}current{% endif %}
+          </a>          
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
     <!--PROJECT-->
     <section id="projects" class="projects sec-pad">
+      <div class="main-container">
+        <h2 class="heading heading-sec heading-sec__mb-bg text-center">
+          {% if portfolio_data.project %}
+            <span class="heading-sec__main">Project</span>
+          {% endif %}
+        </h2>
+        <div class="new-card-wrapper">
+          {% for projects in portfolio_data.project %}
+            <div class="new-card">
+              <div class="new-card-body">
+                <h5 class="new-card-title">{{ projects.project_name }}</h5>
+                <p class="new-card-text">{{projects.project_desc}}.</p> 
+               
+                <a href="#" class="btn btn-primary btn-gradient">{{ projects.project_link }}
+              </a>          
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+    {% comment %} <section id="projects" class="projects sec-pad">
       <div class="main-container">
         <h2 class="heading heading-sec heading-sec__mb-bg">
           <span class="heading-sec__main">Projects</span>
@@ -327,7 +332,24 @@
           </div>
         </div>
       </div>
-    </section>
+    </section> {% endcomment %}
+    <footer class="footer">
+      <div class="footer__content">
+        <div class="footer__left">
+          <span class="footer__name">{{portfolio_data.user_info.name}}</span>
+        </div>
+        <div class="footer__right">
+          <div class="footer__social-links">
+            {% comment %} <a href="#" class="footer__social-link">
+              <img src="linkedin.png" alt="LinkedIn" class="footer__social-icon" />
+            </a> {% endcomment %}
+            <p>copyright 2023</p>
+           
+          </div>
+        </div>
+      </div>
+    </footer>
+    
     <script src="./index.js"></script>
   </body>
 </html>

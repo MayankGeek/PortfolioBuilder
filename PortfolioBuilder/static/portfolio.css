@@ -702,7 +702,7 @@ textarea {
   to {
     opacity: 0;
     top: 27px; } }
-    .skills-container {
+  .skills-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -723,7 +723,11 @@ textarea {
 .card__skill {
   flex: 1;
   margin-right: 10px;
-  text-align: right;
+  text-align: center;
+  display: flex; /* Add display: flex; */
+  align-items: center;
+  justify-content: flex-start; /* Add justify-content: flex-start; */
+  padding-left: 40px; /* Add the desired spacing value */
 }
 
 .card__progress {
@@ -741,6 +745,7 @@ textarea {
   top: 0;
   left: 0;
   height: 100%;
+  width: 80%; /* Increase or decrease the width value as desired */
   background-color: green;
   overflow: hidden;
   animation: progressBarAnimation 1s ease-in-out; /* Add animation */
@@ -764,3 +769,85 @@ textarea {
       text-align: center;
     }
   }
+  .new-card-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .new-card {
+    flex-basis: calc(33.33% - 20px);
+    margin-right: 20px;
+    margin-bottom: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+  }
+  
+  .new-card:last-child {
+    margin-right: 0;
+  }
+  
+  .new-card-title {
+    margin-bottom: 10px;
+  }
+  
+  .new-card-text {
+    margin-bottom: 15px;
+  }
+  
+  .btn-primary.btn-gradient {
+    background-image: linear-gradient(to right, #FF6E70, #FF9B9D);
+  }
+  
+  @media (max-width: 768px) {
+    .new-card {
+      flex-basis: 100%; /* Change to 100% */
+      margin-right: 0;
+    }
+  }
+  .footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+  }
+  
+  .footer__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .footer__left {
+    flex: 1;
+  }
+  
+  .footer__name {
+    font-weight: bold;
+  }
+  
+  .footer__right {
+    flex: 1;
+    text-align: right;
+  }
+  
+  .footer__social-links {
+    display: inline-block;
+  }
+  
+  .footer__social-link {
+    margin-right: 10px;
+  }
+  
+  .footer__social-icon {
+    width: 20px;
+    height: 20px;
+  }
+  
