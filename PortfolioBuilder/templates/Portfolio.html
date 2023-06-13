@@ -11,14 +11,18 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700;900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;
+      600;700;900&display=swap"
       rel="stylesheet"
     />
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
   </head>
   <body>
     <link rel="stylesheet" href="{% static 'portfolio.css' %}"></link>
-     <header class="header">
+      <script src="{% static 'index.js' %}"></script>
+
+     {% comment %} <header class="header">
       <div class="header__content">
         <div class="header__logo-container">
           <div class="header__logo-img-cont">
@@ -82,12 +86,30 @@
           </ul>
         </div>
       </div>
-    </header> 
+    </header>   {% endcomment %}
+
+    <div class="topnav" id="myTopnav">
+      <a href="#home" class="active">
+        <img src="{{portfolio_data.user_info.profile_picture.url}}"
+             class="header__logo-img rounded" style="width: 50px; height: 50px;" >
+      </a>
+      <a href="#home" style="margin-top:10px;">{{portfolio_data.user_info.name}}</a>
+      <a href="#news"style="margin-top:10px;">News</a>
+      <a href="#contact"style="margin-top:10px;">Contact</a>
+      <a href="#about"style="margin-top:10px;">About</a>
+      <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+        <i class="fa fa-bars"style="margin-top:10px;"></i>
+      </a>
+    </div>
+    
+    
+   
     
 
     
-    
-    <section class="home-hero">
+    <!--working code-->
+
+    {% comment %} <section class="home-hero">
       <div class="home-hero__content">
         <h2 class="heading-primary">Hey, My name is {{portfolio_data.user_info.name}}</h2>
         <div class="home-hero__info">
@@ -98,19 +120,43 @@
         <div class="home-hero__cta">
           <a href="./#projects" class="btn btn--bg">Download CV</a>
         </div>
-      </div>
-      <div class="home-hero__mouse-scroll-cont">
+      </div> {% endcomment %}
+      {% comment %} <div class="home-hero__mouse-scroll-cont">
         <div class="mouse"></div>
+      </div> {% endcomment %}
+    {% comment %} </section> {% endcomment %}
+
+
+
+    <section class="home-hero">
+      <div class="home-hero__content">
+        <div class="home-hero__info">
+          <h2 class="heading-primary">Hey, My name is {{portfolio_data.user_info.name}}</h2>
+          <div class="home-hero__info">
+            <p class="text-primary">
+              {{portfolio_data.user_info.about}}
+            </p>
+          </div>
+        </div>
+        <div class="home-hero__cta">
+          <a href="./#projects" class="btn btn--bg">Download CV</a>
+        </div>
       </div>
     </section>
+
+
+
+
+
+    
     <section id="about" class="about sec-pad">
       <div class="main-container">
         <h2 class="heading heading-sec heading-sec__mb-med">
-          <span class="heading-sec__main">About Me</span>
+          <span class="heading-sec__main">About Me</span><br><br>
           <span class="heading-sec__sub">
             {{portfolio_data.user_info.about}}
           </span>
-        </h2> 
+        </h2>
 
 
 
@@ -140,7 +186,7 @@
 
       <div class="about__content-skills">
         <h2 class="heading heading-sec heading-sec__mb-med">
-          <span class="heading-sec__main">SKILLS</span>
+          <span class="heading-sec__main">SKILLS</span><br><br>
         <div class="skills-container">
           {% for skills in portfolio_data.skills %}
           <div class="card">
@@ -350,6 +396,7 @@
       </div>
     </footer>
     
-    <script src="./index.js"></script>
   </body>
+  <script src="{%static 'script.js' %}"></script>
+
 </html>

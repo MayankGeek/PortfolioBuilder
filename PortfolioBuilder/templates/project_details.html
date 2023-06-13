@@ -21,6 +21,7 @@ Project details
                         <div class="card-header bg-light">{{ project.project_start_date }}</div>
                       <p class="card-text">{{ project.project_start_date }}-{% if project.project_end_date == None %} present {% else %} {{ project.project_end_date }} {% endif %}</p>
                         <p class="card-text">{{ project.project_desc }}</p>
+                        <p class="card-text">{{ project.project_link }}</p>
                     </div>
                     {% comment %}
                     <a class="btn mx-auto btn-outline-dark" href="{% url 'home:update-experience' slug details.organisation_name %}">edit</a>
