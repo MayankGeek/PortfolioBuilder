@@ -35,27 +35,10 @@ Add project
             <h2 class="text-center mb-4">Add your project details</h2>
             <form  method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
-                <label for="id_orgainsation">Project Name</label>
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="project name" name="project_name" maxlength="50" required id="id_project_name">
-                </div>
-                <label for="id_joining_date">Start date</label>
-                <div class="form-group">
-                    <input type="date" name="project_start_date" required id="id_project_start_date" class="form-control" placeholder="date format yyyy-mm-dd">
-                </div>
-                <label for="id_ending_date">Ending date:</label>
-                <div class="form-group">
-                    <input type="date" name="project_end_date" class="form-control" placeholder="date format yyyy-mm-dd"  id="id_project_end_date">
-                </div>
-               
                  <label for="basic-url" class="form-label">Your project URL</label>
                 <div class="input-group mb-3">
-                 <input type="text" class="form-control" id="project_link" aria-describedby="basic-addon3"placeholder="Paste your project link...."name="project_link">
+                 <input type="text" class="form-control" id="linkedin_url" aria-describedby="basic-addon3"placeholder="Paste your linkedin link...."name="linkedin_url">
                 </div> 
-                <label for="id_work_experience">Explain your project</label>
-                <div class="form-group">
-                 <textarea name="project_desc" class="form-control" placeholder="Explain your project here..." cols="40" rows="10" required id="id_project_desc" dir="auto"></textarea>
-             </div>
              <div class="text-center">
                 <a href="{% url 'Home:project_details_page' slug %}" class="btn btn-primary">skip</a>
                  <input class="btn btn-primary" type="submit" value="Save">

@@ -16,6 +16,7 @@ class UserInfo(models.Model):
     slug = models.SlugField(unique=True)
     profession = models.CharField(max_length=50)
     place = models.CharField(max_length=50)
+    linkedin_url= models.URLField(max_length=250,null=True, blank=True)
 
     def __str__(self):
         return self.slug
@@ -80,7 +81,8 @@ class Project(models.Model):
     project_desc = models.TextField()
     project_start_date = models.DateField()
     project_end_date = models.DateField( blank=True, null=True)
-    project_link = models.CharField(max_length=2084, null=True, blank=True)
+    project_link = models.URLField(max_length=2084, null=True, blank=True)
+
 
 
     def __str__(self):
@@ -89,8 +91,6 @@ class Project(models.Model):
 # class SocialLinks(models.Model):
 #     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, blank=True, null=True)
 #     slug = models.ForeignKey(UserInfo, on_delete=models.SET_NULL, blank=True, null=True)
-#     linked_url= models.URLField(max_length=250,null=True, blank=True)
-#     instagram_url= models.URLField(max_length=250,null=True, blank=True)
-#     twitter_url= models.URLField(max_length=250,null=True, blank=True)
+#     linkedin_url= models.URLField(max_length=250,null=True, blank=True)
 #     def __str__(self):
 #         return self.slug.name

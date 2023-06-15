@@ -157,21 +157,6 @@
             {{portfolio_data.user_info.about}}
           </span>
         </h2>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
         {% comment %} <div class="about__content-skills">
             <h3 class="about__content-title">My Skills</h3>
             {% for skills in portfolio_data.skills %}
@@ -263,7 +248,7 @@
             <p class="new-card-text">{{experience.work_experience}}.</p>
             <a href="#" class="btn btn-primary btn-gradient">
               {{ experience.joining_date }}-{% if experience.ending_date %}{{ experience.ending_date }}{% else %}current{% endif %}
-          </a>          
+          </a>        
           </div>
         </div>
       {% endfor %}
@@ -285,7 +270,10 @@
                 <h5 class="new-card-title">{{ projects.project_name }}</h5>
                 <p class="new-card-text">{{projects.project_desc}}.</p> 
                
-                <a href="#" class="btn btn-primary btn-gradient">{{ projects.project_link }}
+                <p class="btn btn-primary btn-gradient">{{ projects.project_start_date }}-{% if projects.project_end_date == None %} present {% else %} {{ projects.project_end_date }} {% endif %}</p><br>
+                {% if projects.project_link %}
+                <a href="{{ projects.project_link }}" class="btn btn-primary btn-gradient">View Project</a>
+            {% endif %}
               </a>          
               </div>
             </div>
@@ -390,6 +378,7 @@
               <img src="linkedin.png" alt="LinkedIn" class="footer__social-icon" />
             </a> {% endcomment %}
             <p>copyright 2023</p>
+            
            
           </div>
         </div>

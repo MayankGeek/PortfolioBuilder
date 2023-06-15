@@ -21,6 +21,7 @@ def get_details_form(request):
                 profession=form.cleaned_data.get('profession')
                 about=form.cleaned_data.get('about')
                 profile_picture=form.cleaned_data.get('profile_picture')
+                linkedin_url=form.cleaned_data.get('linkedin_url')
                 user=UserInfo.objects.create(user=request.user,
                 name=name,
                 email=email,
@@ -29,6 +30,7 @@ def get_details_form(request):
                 profession=profession,
                 about=about,
                 profile_picture=profile_picture,
+                linkedin_url=linkedin_url,
                 )
                 user.slug_save()
                 messages.success(request,"Please check your details you have provided press update to update if you entered anything wrong")
@@ -219,6 +221,7 @@ def user_portfolios(request):
     context['user_portfolios'] = portfolios
     return render(request, 'user_portfolios.html', context)
 
+
 @login_required
 def create_portfolio(request,slug):
     portfolio_data={}
@@ -232,4 +235,3 @@ def create_portfolio(request,slug):
 
     print(portfolio_data)
     return render(request,"Portfolio.html",{'portfolio_data':portfolio_data})
-
