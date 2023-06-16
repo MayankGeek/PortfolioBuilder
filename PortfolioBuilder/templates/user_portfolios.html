@@ -21,7 +21,8 @@
                   <div class="card-body">
                     <h5 class="card-title">{{ portfolio.name }}</h5>
                     <p class="card-text">{{ portfolio.about }}</p>
-                    <a href="{% url 'Home:details_page' portfolio.slug %}" class="btn btn-primary">View Details</a>
+                    <a href="{% url 'Home:details_page' portfolio.slug %}" class="btn btn-primary my-2">View Details</a>
+                    <a href="{% url 'Home:create_portfolio' portfolio.slug %}" class="btn btn-primary">View portfolio</a> 
                   </div>
                 </div>
               </div>

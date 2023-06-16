@@ -94,9 +94,12 @@
              class="header__logo-img rounded" style="width: 50px; height: 50px;" >
       </a>
       <a href="#home" style="margin-top:10px;">{{portfolio_data.user_info.name}}</a>
-      <a href="#news"style="margin-top:10px;">News</a>
-      <a href="#contact"style="margin-top:10px;">Contact</a>
       <a href="#about"style="margin-top:10px;">About</a>
+      <a href="#skills"style="margin-top:10px;">Skills</a>
+      <a href="#experience"style="margin-top:10px;">Experience</a>
+      <a href="#projects"style="margin-top:10px;">Project</a>
+      <a href="#contact"style="margin-top:10px;">Resume</a>
+      
       <a href="javascript:void(0);" class="icon" onclick="myFunction()">
         <i class="fa fa-bars"style="margin-top:10px;"></i>
       </a>
@@ -139,7 +142,7 @@
           </div>
         </div>
         <div class="home-hero__cta">
-          <a href="./#projects" class="btn btn--bg">Download CV</a>
+          <a href="#" class="btn btn--bg">Download CV</a>
         </div>
       </div>
     </section>
@@ -169,7 +172,7 @@
       </div> 
       {%endfor%} {% endcomment %}
 
-      <div class="about__content-skills">
+      <div class="about__content-skills"id="skills">
         <h2 class="heading heading-sec heading-sec__mb-med">
           <span class="heading-sec__main">SKILLS</span><br><br>
         <div class="skills-container">
@@ -232,7 +235,7 @@
 </div> {% endcomment %}
 
 <!--WORK EXPERIENCE CODE-->
-<section id="projects" class="projects sec-pad">
+<section id="experience" class="projects sec-pad">
   <div class="main-container">
     <h2 class="heading heading-sec heading-sec__mb-bg text-center">
       {% if portfolio_data.experience %}
@@ -246,9 +249,9 @@
             <h5 class="new-card-title">{{ experience.organisation_name }}</h5>
             <p class="new-card-text">{{experience.position}}.</p>
             <p class="new-card-text">{{experience.work_experience}}.</p>
-            <a href="#" class="btn btn-primary btn-gradient">
+            <p href="#" class="btn btn-primary btn-gradient">
               {{ experience.joining_date }}-{% if experience.ending_date %}{{ experience.ending_date }}{% else %}current{% endif %}
-          </a>        
+            </p>        
           </div>
         </div>
       {% endfor %}
@@ -370,14 +373,16 @@
     <footer class="footer">
       <div class="footer__content">
         <div class="footer__left">
-          <span class="footer__name">{{portfolio_data.user_info.name}}</span>
+          <span class="footer__name">{{portfolio_data.user_info.name}} | copyright 2023</span>
         </div>
         <div class="footer__right">
           <div class="footer__social-links">
-            {% comment %} <a href="#" class="footer__social-link">
-              <img src="linkedin.png" alt="LinkedIn" class="footer__social-icon" />
-            </a> {% endcomment %}
-            <p>copyright 2023</p>
+            {%if portfolio_data.user_info.linkedin_url%}
+             <a href="{{portfolio_data.user_info.linkedin_url}}" class="footer__social-link">
+              <img src="{%static 'linkedin.png'%}" alt="LinkedIn" class="footer__social-icon" />
+            </a> 
+            {%endif%}
+            {% comment %} <p style="font-size:small;">copyright 2023</p> {% endcomment %}
             
            
           </div>

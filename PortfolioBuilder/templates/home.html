@@ -34,53 +34,88 @@ Home
       {% comment %} <h2 style="text-align:center;font-weight:bold;">Here's how it works?</h2> {% endcomment %}
       <strong style="font-weight: bold; font-size: 50px; line-height: 65px; display: block;text-align:center;">Here's how it works</strong>
     </div>
-      <div class="container">
-        <div class="row">
-          <div class="col-md-6">
-            <img src="{%static 'account.jpg' %}" alt="Image" class="img-fluid">
-          </div>
-          <div class="col-md-6">
-           
-            <h2>Create an account on Portify</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce imperdiet elit nec nunc auctor, eget sagittis tellus ullamcorper. Sed ac velit vel lacus sollicitudin placerat. Nam consequat sapien id bibendum venenatis. Sed sagittis neque sed libero blandit cursus. Aenean porta, eros ac volutpat commodo, enim felis vulputate est, sit amet euismod ante ipsum vitae velit. Integer eu arcu leo. Sed vitae enim varius, pulvinar turpis sit amet, consectetur nibh. Etiam in orci at enim pharetra feugiat ac et dolor. Curabitur consequat, quam vitae ullamcorper placerat, eros sem malesuada arcu, ut scelerisque augue velit eu sapien.</p>
-          </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <img src="{% static 'account.jpg' %}" alt="Image" class="img-fluid">
+        </div>
+        <div class="col-md-6 d-flex flex-column align-items-start">
+          <h2 style="margin-top: 0;">Create account on Portify</h2>
+          <ul style="list-style: disc; font-weight: bold; margin-top: 10px; margin-bottom: 10px; padding-left: 20px;">
+            <li style="margin-bottom: 10px;">Sign up for a Portify account to unlock a world of opportunities.</li>
+            <li style="margin-bottom: 10px;">Experience the convenience of managing your portfolio and showcasing your work.</li>
+            <li style="margin-bottom: 10px;">Discover new career prospects and network with potential employers.</li>
+            <li style="margin-bottom: 10px;">Take control of your professional journey and showcase your skills and expertise.</li>
+            <li style="margin-bottom: 10px;">Build a personalized profile and highlight your achievements.</li>
+            <li style="margin-bottom: 10px;">Join Portify today and embark on a path towards professional success.</li>
+          </ul>
         </div>
       </div>
-      
-      <div class="container">
-        <div class="row">
-          <div class="col-md-6 order-md-2">
-            <img src="{%static 'details.jpg' %}" alt="Image" class="img-fluid">
-          </div>
-          <div class="col-md-6 order-md-1">
-            <h2>Provide us your details</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce imperdiet elit nec nunc auctor, eget sagittis tellus ullamcorper. Sed ac velit vel lacus sollicitudin placerat. Nam consequat sapien id bibendum venenatis. Sed sagittis neque sed libero blandit cursus. Aenean porta, eros ac volutpat commodo, enim felis vulputate est, sit amet euismod ante ipsum vitae velit. Integer eu arcu leo. Sed vitae enim varius, pulvinar turpis sit amet, consectetur nibh. Etiam in orci at enim pharetra feugiat ac et dolor. Curabitur consequat, quam vitae ullamcorper placerat, eros sem malesuada arcu, ut scelerisque augue velit eu sapien.</p>
-          </div>
+    </div>
+    
+    
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 order-md-2">
+          <img src="{%static 'details.jpg' %}" alt="Image" class="img-fluid">
         </div>
-      </div>
+        <div class="col-md-6 order-md-1">
+          <h2 style="margin-top: 0;">Provide us your detail</h2>
+          
 
-      <div class="container">
-        <div class="row">
-          <div class="col-md-6">
-            <img src="{%static 'track.jpg' %}" alt="Image" class="img-fluid">
-          </div>
-          <div class="col-md-6">
-            <h2>Track portfolios and share them accordingly</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce imperdiet elit nec nunc auctor, eget sagittis tellus ullamcorper. Sed ac velit vel lacus sollicitudin placerat. Nam consequat sapien id bibendum venenatis. Sed sagittis neque sed libero blandit cursus. Aenean porta, eros ac volutpat commodo, enim felis vulputate est, sit amet euismod ante ipsum vitae velit. Integer eu arcu leo. Sed vitae enim varius, pulvinar turpis sit amet, consectetur nibh. Etiam in orci at enim pharetra feugiat ac et dolor. Curabitur consequat, quam vitae ullamcorper placerat, eros sem malesuada arcu, ut scelerisque augue velit eu sapien.</p>
-          </div>
+          <ul style="list-style: disc; font-weight: bold; margin-top: 10px; margin-bottom: 10px; padding-left: 20px;">
+            <li style="margin-bottom: 10px;">Take a moment to provide us with your essential details.</li>
+            <li style="margin-bottom: 10px;">Your information will help us understand your needs and provide you with a tailored experience.</li>
+            <li style="margin-bottom: 10px;">We value your privacy and ensure that your data is handled securely.</li>
+            <li style="margin-bottom: 10px;">Feel confident knowing that your details are in safe hands.</li>
+            <li style="margin-bottom: 10px;">By sharing your information, you allow us to better serve you and deliver personalized solutions.</li>
+          </ul>
         </div>
       </div>
-      <div class="container">
-        <div class="row">
-          <div class="col-md-6 order-md-2">
-            <img src="{%static 'share.jpg' %}" alt="Image" class="img-fluid">
-          </div>
-          <div class="col-md-6 order-md-1">
-            <h2>Share them with recruiters</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce imperdiet elit nec nunc auctor, eget sagittis tellus ullamcorper. Sed ac velit vel lacus sollicitudin placerat. Nam consequat sapien id bibendum venenatis. Sed sagittis neque sed libero blandit cursus. Aenean porta, eros ac volutpat commodo, enim felis vulputate est, sit amet euismod ante ipsum vitae velit. Integer eu arcu leo. Sed vitae enim varius, pulvinar turpis sit amet, consectetur nibh. Etiam in orci at enim pharetra feugiat ac et dolor. Curabitur consequat, quam vitae ullamcorper placerat, eros sem malesuada arcu, ut scelerisque augue velit eu sapien.</p>
-          </div>
+    </div>
+    
+    
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <img src="{%static 'track.jpg' %}" alt="Image" class="img-fluid">
+        </div>
+        <div class="col-md-6">
+          
+          <h2 style="margin-top: 0;">Track portfolios and share</h2>
+          <ul style="list-style: disc; font-weight: bold; margin-top: 10px; margin-bottom: 10px; padding-left: 20px;">
+          
+            <li style="margin-bottom: 10px;">Effortlessly track and manage your portfolios.</li>
+            <li style="margin-bottom: 10px;">Customize your portfolio settings to align with your investment strategy.</li>
+            <li style="margin-bottom: 10px;">Share your portfolios with specific individuals or groups.</li>
+            <li style="margin-bottom: 10px;">Control the level of access and permissions for each shared portfolio.</li>
+            <li style="margin-bottom: 10px;">Collaborate with colleagues and clients by securely sharing portfolio data.</li>
+          </ul>
         </div>
       </div>
+    </div>
+    
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 order-md-2">
+          <img src="{%static 'share.jpg' %}" alt="Image" class="img-fluid">
+        </div>
+        <div class="col-md-6 order-md-1">
+          <h2 style="margin-top: 0;">Share them with recruiters</h2>
+          <ul style="list-style: disc; font-weight: bold; margin-top: 10px; margin-bottom: 10px; padding-left: 20px;">
+            <li style="margin-bottom: 10px;">Effortlessly share your portfolios with recruiters and hiring managers.</li>
+            <li style="margin-bottom: 10px;">Increase your visibility and showcase your work to potential employers.</li>
+            <li style="margin-bottom: 10px;">Highlight your skills, achievements, and experiences through shared portfolios.</li>
+            <li style="margin-bottom: 10px;">Engage recruiters with a comprehensive and professional portfolio presentation.</li>
+            <li style="margin-bottom: 10px;">Customize the content and layout of shared portfolios to make a lasting impression.</li>
+            <li style="margin-bottom: 10px;">Ensure privacy and control over shared portfolios with secure sharing options.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    
 
       <style>
         /* CSS for the footer */
