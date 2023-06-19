@@ -32,7 +32,8 @@ DEBUG = True
 
 
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['.vercel.app','.now.sh','127.0.0.1','localhost']
+
 
 
 # Application definition
@@ -92,8 +93,12 @@ WSGI_APPLICATION = 'PortfolioBuilder.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'railway',
+        'USER': 'postgres',
+        'PASSWORD': '9IstGHRGwS97SNGn0EZZ',
+        'HOST': 'containers-us-west-65.railway.app',
+        'PORT': '5970',
     }
 }
 
@@ -141,8 +146,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 #Added Manually
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR,"static")
+    os.path.join(BASE_DIR,"static") 
 ]
+
 
 #added for authentication from https://django-allauth.readthedocs.io/en/latest/installation.html
 AUTHENTICATION_BACKENDS = [
