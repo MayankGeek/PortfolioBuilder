@@ -54,11 +54,14 @@ INSTALLED_APPS = [
     'easy_thumbnails',
     'allauth.socialaccount.providers.google',
     'Home',
+    'whitenoise.runserver_nostatic', # new
+
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware', # new
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
