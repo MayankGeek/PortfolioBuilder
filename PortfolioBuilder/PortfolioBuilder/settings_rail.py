@@ -4,7 +4,7 @@ import os
 
 SECRET_KEY=config('SECRET_KEY')
 ALLOWED_HOSTS = ['portfoliobuilder-production.up.railway.app']
-CSRF_TRUSTED_ORIGINS = ['https://portfoliobuilder-production.up.railway.app/']
+CSRF_TRUSTED_ORIGINS = ['https://portfoliobuilder-production.up.railway.app']
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'),]
