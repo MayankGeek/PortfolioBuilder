@@ -1,7 +1,6 @@
 from PortfolioBuilder.settings import *
 from decouple import config
 import os 
-DEBUG = config('DEBUG', default=False, cast=bool)
 SECRET_KEY=config('SECRET_KEY')
 ALLOWED_HOSTS = ['portfoliobuilder-production.up.railway.app']
 CSRF_TRUSTED_ORIGINS = ['https://portfoliobuilder-production.up.railway.app']
