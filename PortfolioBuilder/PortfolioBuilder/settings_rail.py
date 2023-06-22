@@ -4,6 +4,7 @@ import os
 
 SECRET_KEY=config('SECRET_KEY')
 ALLOWED_HOSTS = ['portfoliobuilder-production.up.railway.app','127.0.0.1']
+DEBUG = True
 CSRF_TRUSTED_ORIGINS = ['https://portfoliobuilder-production.up.railway.app']
 #SOCIAL_AUTH_GOOGLE_OAUTH2_REDIRECT_URI = 'https://portfoliobuilder-production.up.railway.app/accounts/google/login/callback/'
 
