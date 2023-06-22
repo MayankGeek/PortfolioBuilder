@@ -32,7 +32,7 @@ DEBUG = False
 
 
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['portfoliobuilder-production.up.railway.app']
 
 
 
