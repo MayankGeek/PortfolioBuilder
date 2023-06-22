@@ -2,7 +2,7 @@ from PortfolioBuilder.settings import *
 from decouple import config
 import os 
 SECRET_KEY=config('SECRET_KEY')
-ALLOWED_HOSTS = ['portfoliobuilder-production.up.railway.app']
+ALLOWED_HOSTS = ['portfoliobuilder-production.up.railway.app','127.0.0.1']
 CSRF_TRUSTED_ORIGINS = ['https://portfoliobuilder-production.up.railway.app']
 #SOCIAL_AUTH_GOOGLE_OAUTH2_REDIRECT_URI = 'https://portfoliobuilder-production.up.railway.app/accounts/google/login/callback/'
 ACCOUNT_DEFAULT_HTTP_PROTOCOL='https'

@@ -249,7 +249,7 @@ textarea {
     text-align: center; }
 
 .about {
-  background: #fafafa; }
+  background: white; }
   .about__content {
     display: grid;
     grid-template-columns: 1fr 1fr;

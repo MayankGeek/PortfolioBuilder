@@ -136,23 +136,23 @@
         <div class="home-hero__info">
           <h2 class="heading-primary">Hey, My name is {{portfolio_data.user_info.name}}</h2>
           <div class="home-hero__info">
-            <p class="text-primary">
-              {{portfolio_data.user_info.about}}
-            </p>
+            <p class="text-primary" style="text-transform: uppercase;">
+              {{ portfolio_data.user_info.profession }}
+            </p>            
           </div>
         </div>
         <div class="home-hero__cta">
           <a href="#" class="btn btn--bg">Download CV</a>
         </div>
       </div>
-    </section>
+    </section><br><br>
 
 
 
 
 
     
-    <section id="about" class="about sec-pad">
+    <section id="about" class="about">
       <div class="main-container">
         <h2 class="heading heading-sec heading-sec__mb-med">
           <span class="heading-sec__main">About Me</span><br><br>
@@ -160,6 +160,9 @@
             {{portfolio_data.user_info.about}}
           </span>
         </h2>
+      </div>
+    </section>
+    
         {% comment %} <div class="about__content-skills">
             <h3 class="about__content-title">My Skills</h3>
             {% for skills in portfolio_data.skills %}
