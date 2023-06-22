@@ -5,6 +5,7 @@ SECRET_KEY=config('SECRET_KEY')
 ALLOWED_HOSTS = ['portfoliobuilder-production.up.railway.app']
 CSRF_TRUSTED_ORIGINS = ['https://portfoliobuilder-production.up.railway.app']
 #SOCIAL_AUTH_GOOGLE_OAUTH2_REDIRECT_URI = 'https://portfoliobuilder-production.up.railway.app/accounts/google/login/callback/'
+USE_X_FORWARDED_HOST = True
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'),]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
