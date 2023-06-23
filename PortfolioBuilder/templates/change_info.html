@@ -1,5 +1,4 @@
 {% extends 'base.html' %}
-
 {% load static %}
 {%block title%}
 Update details 
@@ -37,6 +36,10 @@ Update details
         <label for="id_place">Place:</label>
         <div class="form-group">
           <input type="text" name="place" class="form-control" value="{{form.place.value}}" placeholder="Your current City" maxlength="50" required id="id_place">
+        </div>
+        <label for="id_linkedin_url">LinkedIn Url:</label>
+        <div class="form-group">
+          <input type="text" name="linkedin_url" class="form-control" value="{{form.linkedin_url.value}}" placeholder="Your linkedin url" maxlength="50">
         </div>
         <label for="id_profile_picture">Current profile picture:</label>
          <a href="{% get_media_prefix %}{{ form.profile_picture.value }}" style="color:dodgerblue;">{{ form.profile_picture.value }}</a>

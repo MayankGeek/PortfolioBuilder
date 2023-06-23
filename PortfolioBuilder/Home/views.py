@@ -47,16 +47,34 @@ def details_page(request,slug):
     context['details_page']=UserInfo.objects.get(slug=slug)
     return render(request,'details_page.html',context)
 
+# @login_required
+# def change_info(request, slug):
+#     obj=get_object_or_404(UserInfo,slug=slug)
+#     form=UserInfoForm(request.POST or None,request.FILES,instance=obj)
+#     if form.is_valid():
+#         form.save()
+#         messages.success(request,"your information has been updated")
+#         return redirect("Home:details_page",slug=slug)
+#     form=UserInfoForm(request.POST and request.FILES or None,instance=obj)
+#     return render(request,"change_info.html",{"form":form})
+
+
+#working code for the linkedin problem 
 @login_required
 def change_info(request, slug):
-    obj=get_object_or_404(UserInfo,slug=slug)
-    form=UserInfoForm(request.POST or None,request.FILES,instance=obj)
-    if form.is_valid():
-        form.save()
-        messages.success(request,"your information has been updated")
-        return redirect("Home:details_page",slug=slug)
-    form=UserInfoForm(request.POST and request.FILES or None,instance=obj)
-    return render(request,"change_info.html",{"form":form})
+    obj = get_object_or_404(UserInfo, slug=slug)
+    if request.method == "POST":
+        form = UserInfoForm(request.POST, request.FILES, instance=obj)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Your information has been updated")
+            return redirect("Home:details_page", slug=slug)
+    else:
+        form = UserInfoForm(instance=obj)
+
+    return render(request, "change_info.html", {"form": form, "slug": slug})
+
+
 
 #testing code for add_skills_form
 @login_required

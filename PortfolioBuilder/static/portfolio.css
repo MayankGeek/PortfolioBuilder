@@ -166,7 +166,8 @@ textarea {
     padding: calc(1.5rem - 2px) calc(5rem - 2px); }
 
 .sec-pad {
-  padding: 3rem 0; }
+  padding: 3rem 0; 
+  padding-bottom:80px;}
   @media only screen and (max-width: 56.25em) {
     .sec-pad {
       padding: 8rem 0; } }
