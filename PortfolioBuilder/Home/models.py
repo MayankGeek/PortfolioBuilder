@@ -5,11 +5,14 @@ from django.conf import settings
 import itertools
 import random
 import string
+import cloudinary
+from cloudinary.models import CloudinaryField
 
 class UserInfo(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, blank=True, null=True)
     name = models.CharField(max_length=50)
-    profile_picture = models.ImageField(upload_to="images")
+    # profile_picture = models.ImageField(upload_to="images")
+    profile_picture = CloudinaryField('images')
     email = models.EmailField()
     about = models.TextField()
     mobile_no = models.DecimalField(max_digits=10, decimal_places=0)
