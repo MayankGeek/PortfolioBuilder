@@ -6,9 +6,11 @@
 <link rel="stylesheet" href="{% static 'home.css' %}">
 <style>
   .read-more {
-    color: blue;
-    text-decoration: underline;
+    color: inherit;
+    text-decoration: none;
     cursor: pointer;
+    font-weight: lighter;
+    color: #888;
   }
 </style>
 
@@ -23,7 +25,7 @@
             <div class="card mb-3">
               <div class="row g-0">
                 <div class="col-4 col-md-3">
-                  <img src="{{ portfolio.profile_picture.url }}" alt="Profile Picture" class="img-fluid rounded-circle" style="max-width: 100%; height: auto;">
+                  <img src="{{ portfolio.profile_picture.url }}" alt="Profile Picture" class="img-fluid rounded-circle" style="max-width: 100%; height: auto;padding-left:16px;padding-top:9px;">
                 </div>
                 <div class="col-8 col-md-9">
                   <div class="card-body">
@@ -37,8 +39,8 @@
                         {{ portfolio.about }}
                       {% endif %}
                     </p>
-                    <a href="{% url 'Home:details_page' portfolio.slug %}" class="btn btn-primary my-2">View Details</a>
-                    <a href="{% url 'Home:create_portfolio' portfolio.slug %}" class="btn btn-primary">View Portfolio</a> 
+                    <a href="{% url 'Home:details_page' portfolio.slug %}" class="btn btn-primary my-2 mx-2">View details</a>
+                    <a href="{% url 'Home:create_portfolio' portfolio.slug %}" class="btn btn-primary">View portfolio</a> 
                   </div>
                 </div>
               </div>
