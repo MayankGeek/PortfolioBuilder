@@ -1,6 +1,5 @@
 {% extends 'base.html' %}
 {% load static %}
-
 {% block title %}
 Skills Details
 {% endblock %}
@@ -26,23 +25,37 @@ Skills Details
     <table class="table table-bordered table-hover custom-table shadow">
         <thead class="thead-dark">
             <tr>
-                <th>Skill Name</th>
-                <th>Level Percentage</th> 
-                <th>Update</th>
+                <th style="text-align: center; padding: 10px;">Skill Name</th>
+                <th style="text-align: center; padding: 10px;">Level Percentage</th> 
+                <th style="text-align: center; padding: 10px;">Edit</th>
                 {% comment %} <th>Delete</th> {% endcomment %}
             </tr>
         </thead>
         <tbody>
             {% for detail in details %}
             <tr>
-                <td><strong>{{ detail.skill }}</strong></td>
-                <td>
+                <td style="text-align: center; padding: 10px;"><strong>{{ detail.skill }}</strong></td>
+                {% comment %} <td style="text-align: center; padding: 10px;">
                     <div class="progress">
                         <div class="progress-bar bg-success" role="progressbar" style="width: {{ detail.percent }}%;" aria-valuenow="{{ detail.percent }}" aria-valuemin="0" aria-valuemax="100">{{ detail.percent }}%</div>
                     </div>
-                </td>
-                <td><a href="{% url 'Home:update_skill' slug detail.skill %}" class="table-data">edit</a></td>
+                </td> {% endcomment %}
+                <td style="text-align: center; padding: 14px;">
+                    <div class="progress">
+                      <div class="progress-bar bg-success" role="progressbar" style="width: {{ detail.percent }}%;" aria-valuenow="{{ detail.percent }}" aria-valuemin="0" aria-valuemax="100">
+                        <span style="font-size: 16px;">{{ detail.percent }}%</span>
+                      </div>
+                    </div>
+                  </td>
+                  
+                {% comment %} <td><a href="{% url 'Home:update_skill' slug detail.skill %}" class="table-data">edit</a></td> {% endcomment %}
                 {% comment %} <td><strong>{{ detail.skill }}</strong></td> {% endcomment %}
+                <td style="text-align: center; padding: 10px;">
+                    <a href="{% url 'Home:update_skill' slug detail.skill %}" class="table-data">
+                      <img src="{%static 'edit.png' %}" style="max-width: 25px;
+                      height: auto;"alt="Edit" />
+                    </a>
+                  </td>
             </tr>
             {% endfor %}
         </tbody>
