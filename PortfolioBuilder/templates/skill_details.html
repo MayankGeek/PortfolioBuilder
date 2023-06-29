@@ -27,7 +27,9 @@ Skills Details
         <thead class="thead-dark">
             <tr>
                 <th>Skill Name</th>
-                <th>Level Percentage</th>
+                <th>Level Percentage</th> 
+                <th>Update</th>
+                {% comment %} <th>Delete</th> {% endcomment %}
             </tr>
         </thead>
         <tbody>
@@ -39,6 +41,8 @@ Skills Details
                         <div class="progress-bar bg-success" role="progressbar" style="width: {{ detail.percent }}%;" aria-valuenow="{{ detail.percent }}" aria-valuemin="0" aria-valuemax="100">{{ detail.percent }}%</div>
                     </div>
                 </td>
+                <td><a href="{% url 'Home:update_skill' slug detail.skill %}" class="table-data">edit</a></td>
+                {% comment %} <td><strong>{{ detail.skill }}</strong></td> {% endcomment %}
             </tr>
             {% endfor %}
         </tbody>

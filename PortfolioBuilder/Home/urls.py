@@ -23,5 +23,6 @@ urlpatterns = [
     path('add_project_form/<slug>/',views.add_project_form,name='add_project_form'),
     path('project_details_page/<slug>/',views.project_details_page,name='project_details_page'),
     path('user_portfolios/',views.user_portfolios,name='user_portfolios'),
+    path('update_skill/<slug>/<skill>/',views.update_skill,name='update_skill'),
     path('create_portfolio/<slug>',views.create_portfolio,name='create_portfolio'),
 ]

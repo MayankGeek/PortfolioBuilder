@@ -239,6 +239,21 @@ def user_portfolios(request):
     context['user_portfolios'] = portfolios
     return render(request, 'user_portfolios.html', context)
 
+@login_required
+def update_skill(request,slug,skill):
+
+    obj = get_object_or_404(Skill,user=request.user, slug__slug=slug, skill=skill)
+    form = AddSkillForm(request.POST or None, instance=obj)
+    if form.is_valid():
+        skill = form.cleaned_data.get('skill')
+        percent = form.cleaned_data.get('percent')
+        form.save()
+        messages.success(request, "Your skill is updated")
+        return redirect('Home:skill_details_page', slug=slug)
+
+    form = AddSkillForm(request.POST or None, instance=obj)
+    return render(request, "update_skill.html", {'form': form})
+
 
 @login_required
 def create_portfolio(request,slug):
