@@ -254,6 +254,14 @@ def update_skill(request,slug,skill):
     form = AddSkillForm(request.POST or None, instance=obj)
     return render(request, "update_skill.html", {'form': form})
 
+@login_required
+def delete_skill(request,slug,skill):
+    obj=Skill.objects.filter(user=request.user,slug__slug=slug,skill=skill)
+    obj.delete()
+    messages.success(request,"Your skill is deleted")
+    return redirect("Home:skill_details_page",slug=slug)
+
+
 
 @login_required
 def create_portfolio(request,slug):

@@ -28,7 +28,7 @@ Skills Details
                 <th style="text-align: center; padding: 10px;">Skill Name</th>
                 <th style="text-align: center; padding: 10px;">Level Percentage</th> 
                 <th style="text-align: center; padding: 10px;">Edit</th>
-                {% comment %} <th>Delete</th> {% endcomment %}
+                <th style="text-align: center; padding: 10px;">Delete</th>
             </tr>
         </thead>
         <tbody>
@@ -54,6 +54,12 @@ Skills Details
                     <a href="{% url 'Home:update_skill' slug detail.skill %}" class="table-data">
                       <img src="{%static 'edit.png' %}" style="max-width: 25px;
                       height: auto;"alt="Edit" />
+                    </a>
+                  </td>
+                  <td style="text-align: center; padding: 10px;">
+                    <a href="{% url 'Home:delete_skill' slug detail.skill %}" class="table-data">
+                      <img src="{%static 'delete.png' %}" style="max-width: 25px;
+                      height: auto;"alt="Delete" />
                     </a>
                   </td>
             </tr>

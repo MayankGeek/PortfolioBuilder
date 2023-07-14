@@ -24,5 +24,6 @@ urlpatterns = [
     path('project_details_page/<slug>/',views.project_details_page,name='project_details_page'),
     path('user_portfolios/',views.user_portfolios,name='user_portfolios'),
     path('update_skill/<slug>/<skill>/',views.update_skill,name='update_skill'),
+    path('delete_skill/<slug>/<skill>/',views.delete_skill,name='delete_skill'),
     path('create_portfolio/<slug>',views.create_portfolio,name='create_portfolio'),
 ]
