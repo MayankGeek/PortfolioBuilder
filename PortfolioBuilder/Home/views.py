@@ -106,7 +106,6 @@ def skill_details_page(request,slug):
   
 # @login_required
 # def add_education_form(request):
-
 @login_required
 def add_education_form(request, slug):
     if request.method == "POST":
