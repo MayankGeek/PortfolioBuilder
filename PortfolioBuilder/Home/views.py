@@ -262,7 +262,7 @@ def delete_skill(request,slug,skill):
 
 
 
-@login_required
+
 def create_portfolio(request,slug):
     portfolio_data={}
     portfolio_data['user_info']=UserInfo.objects.get(slug=slug)
